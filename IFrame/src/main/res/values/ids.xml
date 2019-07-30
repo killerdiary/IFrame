@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="base_cToolBar" type="id" />
+    <item name="base_vLeft" type="id" />
+    <item name="base_vTitle" type="id" />
+    <item name="base_vRight" type="id" />
+    <item name="base_cMain" type="id" />
+    <item name="base_cLoad" type="id" />
+    <item name="base_vLoading" type="id" />
+    <item name="base_imgMessage" type="id" />
+    <item name="base_txtMessage" type="id" />
+
+    <item name="loading_cLoad" type="id" />
+    <item name="loading_vLoading" type="id" />
+    <item name="loading_txtMessage" type="id" />
+
+<!--    <item name="recycler_rcyList" type="id" />-->
+<!--    <item name="confirm_txtTitle" type="id" />-->
+<!--    <item name="confirm_txtContent" type="id" />-->
+<!--    <item name="confirm_btnCancel" type="id" />-->
+<!--    <item name="confirm_btnConfirm" type="id" />-->
+<!--    <item name="date_picker_btnCancel" type="id" />-->
+<!--    <item name="date_picker_btnConfirm" type="id" />-->
+<!--    <item name="date_picker_lwvYear" type="id" />-->
+<!--    <item name="date_picker_lwvMonth" type="id" />-->
+<!--    <item name="date_picker_lwvDay" type="id" />-->
+<!--    <item name="date_picker_txtTitle" type="id" />-->
+
+<!--    <item name="picker_btnCancel" type="id" />-->
+<!--    <item name="picker_btnConfirm" type="id" />-->
+<!--    <item name="picker_lwvList" type="id" />-->
+<!--    <item name="picker_lwvList1" type="id" />-->
+<!--    <item name="picker_lwvList2" type="id" />-->
+
+
+</resources>

@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion VERSION.compileSdkVersion
+    buildToolsVersion VERSION.buildToolsVersion //需要发布maven时必须
+
+    defaultConfig {
+        minSdkVersion VERSION.minSdkVersion
+        targetSdkVersion VERSION.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+apply from: "../maven-release-aar.gradle" //需要发布maven时必须

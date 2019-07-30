@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color> <!--白色 -->
+    <color name="black">#000000</color> <!--黑色 -->
+    <color name="gray">#808080</color> <!--灰色 -->
+    <color name="red">#FF4343</color> <!--红色 -->
+    <color name="rose">#DE1E7C</color> <!--红色 -->
+    <color name="yellow">#FFAB19</color> <!--黄色 -->
+    <color name="orange">#FB7E00</color> <!--橙色 -->
+    <color name="purple">#800080</color> <!--紫色 -->
+    <color name="blue">#00AAFF</color> <!--蓝色 -->
+    <color name="green">#5ED125</color> <!--蓝色 -->
+    <color name="smoke">#F5F5F5</color> <!--烟白色 -->
+
+    <color name="transparent">#00000000</color>
+    <color name="translucence">#40000000</color>
+    <color name="translucence_light">#20000000</color>
+    <color name="transparent_ed">#10000000</color>
+
+    <color name="txt_black_deep">#2A2A2A</color>
+    <color name="txt_black">#333333</color>
+    <color name="txt_black_light">#666666</color>
+    <color name="txt_gray">#999999</color>
+    <color name="txt_gray_light">#B3B3B3</color>
+
+    <color name="btn_disable">#EFF3F8</color>
+    <color name="btn_highlight">#1F000000</color>
+    <color name="btn_border">#30000000</color>
+
+    <color name="edit_disable">@color/btn_disable</color>
+
+    <color name="divider_gray">#DDDDDD</color>
+    <color name="divider_gray_light">#EEEEEE</color>
+
+    <color name="item_ed">#F2F2F2</color>
+
+</resources>

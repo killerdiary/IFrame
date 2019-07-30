@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@id/base_vRight"
+        android:layout_width="?attr/appHeaderHeight"
+        android:layout_height="?attr/appHeaderHeight"
+        android:layout_gravity="right"
+        android:background="@drawable/transparent_selector"
+        android:contentDescription="@string/image"
+        android:padding="@dimen/header_func_padding"
+        android:src="@android:drawable/stat_sys_warning"
+        tools:ignore="RtlHardcoded" />

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@id/base_cLoad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+    <com.hy.frame.widget.AVLoadingIndicatorView
+            android:id="@id/base_vLoading"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            app:indicatorColor="@color/blue" />
+
+    <ImageView
+            android:id="@id/base_imgMessage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/stat_sys_warning"
+            android:visibility="visible" />
+
+    <TextView
+            android:id="@id/base_txtMessage"
+            style="@style/Base_TxtStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:gravity="center"
+            android:text="@string/loading"
+            android:textColor="@color/txt_gray" />
+
+</LinearLayout>
