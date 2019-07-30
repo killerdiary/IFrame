@@ -17,35 +17,51 @@ public final class FileUtil {
     public static final String DIR_CACHE = "CFrame";
 
     public static String getCachePath(Context cxt, String dirType) {
-        File fDir = null;
+//        File fDir = null;
 //        try {
 //            fDir = cxt.getExternalFilesDir(DIR_CACHE);
 //            if (fDir != null && !fDir.exists()) fDir.mkdirs();
 //        } catch (Exception ignored) {
 //        }
+//        try {
+//            if (fDir == null) {
+//                File dir = cxt.getFilesDir();
+//                if (dir == null) return null;
+//                fDir = new File(dir.getParentFile(), DIR_CACHE);
+//
+//            }
+//        } catch (Exception ignored) {
+//        }
+//        if (fDir == null) {
+//            fDir = cxt.getFilesDir();
+//            if (fDir == null) return null;
+//            if (!fDir.exists()) fDir.mkdirs();
+//            if (dirType == null || dirType.length() == 0) return fDir.getPath();
+//            File file = new File(fDir, dirType);
+//            // 判断文件夹存在与否，否则创建
+//            if (!file.exists()) file.mkdirs();
+//            return fDir.getPath();
+//        } else {
+//            if (!fDir.exists()) fDir.mkdirs();
+//            if (dirType == null || dirType.length() == 0) return fDir.getPath();
+//            return fDir.getPath();
+//        }
+        File fDir = null;
         try {
-            if (fDir == null) {
-                File dir = cxt.getFilesDir();
-                if (dir == null) return null;
-                fDir = new File(dir.getParentFile(), DIR_CACHE);
-
+            File dir = cxt.getFilesDir();
+            if (dir == null) return null;
+            fDir = new File(dir.getParentFile(), DIR_CACHE);
+            if (!fDir.exists()) fDir.mkdirs();
+            if (dirType != null && dirType.length() != 0) {
+                File file = new File(fDir, dirType);
+                if (!file.exists()) file.mkdirs();
+                return file.getPath();
+            } else {
+                return fDir.getPath();
             }
         } catch (Exception ignored) {
         }
-        if (fDir == null) {
-            fDir = cxt.getFilesDir();
-            if (fDir == null) return null;
-            if (!fDir.exists()) fDir.mkdirs();
-            if (dirType == null || dirType.length() == 0) return fDir.getPath();
-            File file = new File(fDir, dirType);
-            // 判断文件夹存在与否，否则创建
-            if (!file.exists()) file.mkdirs();
-            return fDir.getPath();
-        } else {
-            if (!fDir.exists()) fDir.mkdirs();
-            if (dirType == null || dirType.length() == 0) return fDir.getPath();
-            return fDir.getPath();
-        }
+        return null;
     }
 
     /**
