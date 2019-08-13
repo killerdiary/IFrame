@@ -12,7 +12,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hy.iframe.R;
 import com.hy.frame.common.IBaseTemplateUI;
 import com.hy.frame.common.IBaseUI;
 import com.hy.frame.common.IImageLoader;
@@ -20,6 +19,7 @@ import com.hy.frame.common.ILoadingDialog;
 import com.hy.frame.common.ILoadingUI;
 import com.hy.frame.common.ITemplateController;
 import com.hy.frame.util.MyToast;
+import com.hy.iframe.R;
 
 /**
  * title 无

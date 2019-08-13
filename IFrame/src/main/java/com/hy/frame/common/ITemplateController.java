@@ -86,6 +86,7 @@ public interface ITemplateController {
 
     /**
      * 初始化LoadingUI控制器
+     *
      * @return 是否成功
      */
     boolean initLoading();

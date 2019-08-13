@@ -15,6 +15,16 @@ versions.androidx_constraintlayout = "2.0.0-alpha3"
 
 ext.VERSION = versions
 
+def deps = [:]
+
+def plugin = [:]
+plugin.gradle = "com.android.tools.build:gradle:${versions.plugin_gradle}"
+plugin.kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.plugin_kotlin}"
+plugin.github = "com.github.dcendents:android-maven-gradle-plugin:${versions.plugin_github}"
+deps.plugin = plugin
+
+ext.deps = deps
+
 //ext.deps = [:]
 //def deps = [:]
 

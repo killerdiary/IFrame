@@ -69,9 +69,10 @@ public final class MyLog {
 
     /**
      * 日志输出
+     *
      * @param priority 级别
-     * @param tag 标签
-     * @param msg 信息
+     * @param tag      标签
+     * @param msg      信息
      */
     private static void println(int priority, String tag, Object msg) {
         if (impl == null) impl = new IMPL();

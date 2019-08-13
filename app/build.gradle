@@ -24,6 +24,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility VERSION.javaVersion
+        targetCompatibility VERSION.javaVersion
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${APP_ID}.v${variant.versionName}"
+            outputFileName += ".apk"
+        }
+    }
 }
 
 dependencies {

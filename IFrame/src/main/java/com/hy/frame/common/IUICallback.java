@@ -9,8 +9,9 @@ package com.hy.frame.common;
 public interface IUICallback {
     /**
      * 发送消息 用于
+     *
      * @param flag 标示
-     * @param msg 消息
+     * @param msg  消息
      */
     void sendMessage(int flag, Object msg);
 }

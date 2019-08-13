@@ -2,6 +2,7 @@ package com.hy.frame.util;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
@@ -15,11 +16,26 @@ import java.util.List;
  */
 public final class PmUtil {
     /**
-     * 返回当前程序版本信息
+     * 获取PackageInfo
      */
-    public static PackageInfo getAppVersion(Context cxt) {
+    public static PackageInfo getPackageInfo(Context cxt, String packageName) {
+        if (packageName == null || packageName.length() == 0)
+            packageName = cxt.getPackageName();
         try {
-            return cxt.getPackageManager().getPackageInfo(cxt.getPackageName(), 0);
+            return cxt.getPackageManager().getPackageInfo(packageName, PackageManager.GET_ACTIVITIES); //0 获取所有信息
+        } catch (Exception ignored) {
+        }
+        return null;
+    }
+
+    /**
+     * 获取ApplicationInfo
+     */
+    public static ApplicationInfo getApplicationInfo(Context cxt, String packageName) {
+        if (packageName == null || packageName.length() == 0)
+            packageName = cxt.getPackageName();
+        try {
+            return cxt.getPackageManager().getApplicationInfo(packageName, PackageManager.GET_META_DATA);
         } catch (Exception ignored) {
         }
         return null;
@@ -29,13 +45,7 @@ public final class PmUtil {
      * 检测该包名所对应的应用是否存在
      */
     public static boolean checkPackage(Context cxt, String packageName) {
-        if (packageName == null || packageName.length() == 0) return false;
-        try {
-            cxt.getPackageManager().getApplicationInfo(packageName, PackageManager.GET_META_DATA);
-            return true;
-        } catch (Exception ignored) {
-        }
-        return false;
+        return getPackageInfo(cxt, packageName) != null;
     }
 
 

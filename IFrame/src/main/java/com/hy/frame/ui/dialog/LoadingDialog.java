@@ -5,8 +5,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.hy.iframe.R;
 import com.hy.frame.common.ILoadingDialog;
+import com.hy.iframe.R;
 
 /**
  * title 无

@@ -16,8 +16,9 @@ public interface IBaseDialog {
 
     /**
      * 调整窗口大小和位置
-     * @param width 宽
-     * @param height 高
+     *
+     * @param width   宽
+     * @param height  高
      * @param gravity 对齐方式
      */
     void windowDeploy(float width, float height, int gravity);

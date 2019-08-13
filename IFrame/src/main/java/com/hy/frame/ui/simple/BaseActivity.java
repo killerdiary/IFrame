@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import com.hy.iframe.R;
 import com.hy.frame.common.BaseApplication;
 import com.hy.frame.common.IBaseActivity;
 import com.hy.frame.common.IBaseApplication;
@@ -20,6 +19,7 @@ import com.hy.frame.common.IImageLoader;
 import com.hy.frame.common.ITemplateController;
 import com.hy.frame.util.MyLog;
 import com.hy.frame.util.ResUtil;
+import com.hy.iframe.R;
 
 /**
  * title BaseActivity

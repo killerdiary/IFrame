@@ -13,7 +13,7 @@ import java.text.DecimalFormat;
  * time 19-7-9 上午11:49
  * desc 无
  */
-public final class FileUtil{
+public final class FileUtil {
     public static final String DIR_CACHE = "CFrame";
 
     public static String getCachePath(Context cxt, String dirType) {
@@ -22,14 +22,15 @@ public final class FileUtil{
 
     /**
      * 获取缓存路径 默认使用 data/data/package..
-     * @param cxt Context
+     *
+     * @param cxt     Context
      * @param dirType 子目录名称
      * @param sdFirst sdcard优先
      * @return 路径
      */
     public static String getCachePath(Context cxt, String dirType, boolean sdFirst) {
         File fDir = null;
-        if(sdFirst){
+        if (sdFirst) {
             try {
                 fDir = cxt.getExternalFilesDir(DIR_CACHE);
                 if (fDir != null && !fDir.exists()) fDir.mkdirs();
@@ -48,7 +49,7 @@ public final class FileUtil{
         } catch (Exception ignored) {
             fDir = null;
         }
-        if(fDir != null && fDir.exists()){
+        if (fDir != null && fDir.exists()) {
             if (dirType == null || dirType.length() == 0) return fDir.getPath();
             File file = new File(fDir, dirType);
             // 判断文件夹存在与否，否则创建

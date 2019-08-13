@@ -9,8 +9,8 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.TextView;
 
-import com.hy.iframe.R;
 import com.hy.frame.util.ResUtil;
+import com.hy.iframe.R;
 
 /**
  * title 可控制图标大小TextView，另外只支持drawableLeft居中

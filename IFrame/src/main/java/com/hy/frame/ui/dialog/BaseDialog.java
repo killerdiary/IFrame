@@ -120,7 +120,7 @@ public abstract class BaseDialog extends android.app.Dialog implements IBaseUI, 
         return findViewById(id);
     }
 
-    protected  <T extends View> T setOnClickListener(int id) {
+    protected <T extends View> T setOnClickListener(int id) {
         return setOnClickListener(id, null);
     }
 
