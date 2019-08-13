@@ -6,10 +6,10 @@ import android.os.Message;
 import java.lang.ref.WeakReference;
 
 /**
- * title 定时器_主线程
+ * title 定时器
  * author heyan
  * time 19-7-12 下午4:38
- * desc 无
+ * desc 主线程
  */
 public final class TimerUtil implements MyHandler.HandlerListener {
 

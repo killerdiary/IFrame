@@ -13,53 +13,47 @@ import java.text.DecimalFormat;
  * time 19-7-9 上午11:49
  * desc 无
  */
-public final class FileUtil {
+public final class FileUtil{
     public static final String DIR_CACHE = "CFrame";
 
     public static String getCachePath(Context cxt, String dirType) {
-//        File fDir = null;
-//        try {
-//            fDir = cxt.getExternalFilesDir(DIR_CACHE);
-//            if (fDir != null && !fDir.exists()) fDir.mkdirs();
-//        } catch (Exception ignored) {
-//        }
-//        try {
-//            if (fDir == null) {
-//                File dir = cxt.getFilesDir();
-//                if (dir == null) return null;
-//                fDir = new File(dir.getParentFile(), DIR_CACHE);
-//
-//            }
-//        } catch (Exception ignored) {
-//        }
-//        if (fDir == null) {
-//            fDir = cxt.getFilesDir();
-//            if (fDir == null) return null;
-//            if (!fDir.exists()) fDir.mkdirs();
-//            if (dirType == null || dirType.length() == 0) return fDir.getPath();
-//            File file = new File(fDir, dirType);
-//            // 判断文件夹存在与否，否则创建
-//            if (!file.exists()) file.mkdirs();
-//            return fDir.getPath();
-//        } else {
-//            if (!fDir.exists()) fDir.mkdirs();
-//            if (dirType == null || dirType.length() == 0) return fDir.getPath();
-//            return fDir.getPath();
-//        }
+        return getCachePath(cxt, dirType, false);
+    }
+
+    /**
+     * 获取缓存路径 默认使用 data/data/package..
+     * @param cxt Context
+     * @param dirType 子目录名称
+     * @param sdFirst sdcard优先
+     * @return 路径
+     */
+    public static String getCachePath(Context cxt, String dirType, boolean sdFirst) {
         File fDir = null;
+        if(sdFirst){
+            try {
+                fDir = cxt.getExternalFilesDir(DIR_CACHE);
+                if (fDir != null && !fDir.exists()) fDir.mkdirs();
+            } catch (Exception ignored) {
+                fDir = null;
+            }
+        }
+
         try {
-            File dir = cxt.getFilesDir();
-            if (dir == null) return null;
-            fDir = new File(dir.getParentFile(), DIR_CACHE);
-            if (!fDir.exists()) fDir.mkdirs();
-            if (dirType != null && dirType.length() != 0) {
-                File file = new File(fDir, dirType);
-                if (!file.exists()) file.mkdirs();
-                return file.getPath();
-            } else {
-                return fDir.getPath();
+            if (fDir == null) {
+                File dir = cxt.getFilesDir();
+                if (dir == null) return null;
+                fDir = new File(dir.getParentFile(), DIR_CACHE);
+                if (!fDir.exists()) fDir.mkdirs();
             }
         } catch (Exception ignored) {
+            fDir = null;
+        }
+        if(fDir != null && fDir.exists()){
+            if (dirType == null || dirType.length() == 0) return fDir.getPath();
+            File file = new File(fDir, dirType);
+            // 判断文件夹存在与否，否则创建
+            if (!file.exists()) file.mkdirs();
+            return fDir.getPath();
         }
         return null;
     }
@@ -236,7 +230,7 @@ public final class FileUtil {
      *
      * @param path   path.
      * @param ignore 忽略当前文件
-     * @return Long size.
+     * @return 是否成功
      */
     public static boolean clearDir(String path, boolean ignore) {
         if (path == null) return true;
@@ -246,7 +240,7 @@ public final class FileUtil {
         } catch (Exception ignored) {
 
         }
-        if (f != null) {
+        if (f != null && f.exists()) {
             if (f.isDirectory()) {
                 File[] files = f.listFiles();
                 if (files != null && files.length > 0)
@@ -266,10 +260,10 @@ public final class FileUtil {
     }
 
     /**
-     * 清空目录
+     * 清空目录 包含当前
      *
      * @param f 文件夹
-     * @return Long size.
+     * @return 是否成功
      */
     public static boolean clearDirImpl(File f) {
         if (f == null) return true;

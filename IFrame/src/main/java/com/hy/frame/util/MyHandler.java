@@ -1,6 +1,7 @@
 package com.hy.frame.util;
 
 import android.content.Context;
+import android.os.Looper;
 import android.os.Message;
 
 import java.lang.ref.WeakReference;
@@ -9,13 +10,14 @@ import java.lang.ref.WeakReference;
  * title 避免内存泄漏Handler
  * author heyan
  * time 19-7-9 上午10:33
- * desc 无
+ * desc 主线程
  */
 public final class MyHandler extends android.os.Handler {
     private final WeakReference<Context> wcxt;
     private final HandlerListener listener;
 
     public MyHandler(Context cxt, HandlerListener listener) {
+        super(Looper.getMainLooper());
         if (cxt != null) this.wcxt = new WeakReference<>(cxt);
         else this.wcxt = null;
         this.listener = listener;
