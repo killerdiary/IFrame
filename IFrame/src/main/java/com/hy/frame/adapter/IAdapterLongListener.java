@@ -6,7 +6,7 @@ import android.view.View;
  * title IAdapterLongListener
  * author heyan
  * time 19-7-10 下午3:51
- * desc 无
+ * desc 包含 IAdapterListener
  */
 public interface IAdapterLongListener<T> extends IAdapterListener<T> {
     /**

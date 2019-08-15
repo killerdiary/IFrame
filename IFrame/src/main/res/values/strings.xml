@@ -1,6 +1,6 @@
 <resources>
     <string name="loading">加载中&#8230;</string>
-    <string name="hint_net_fail">网络连接失败，点击重试</string>
+<!--    <string name="hint_net_fail">网络连接失败，点击重试</string>-->
     <string name="hint_nodata">没有数据</string>
     <string name="hint_frame_warn">使用该框架注意事项:</string>
     <string name="hint_frame_warn_msg">1.使用Base类时, 需配置application继承BaseApplication\n2.配置application的theme继承AppBaseTheme</string>
@@ -8,44 +8,46 @@
     <string name="confirm">确定</string>
     <string name="complete">完成</string>
     <string name="cancel">取消</string>
+    <string name="submit">提交</string>
+    <string name="delete">删除</string>
     <string name="image">图片</string>
 
-    <string name="timer_send_re">重新发送</string>
-    <string name="timer_sending">发送中&#8230;</string>
+<!--    <string name="timer_send_re">重新发送</string>-->
+<!--    <string name="timer_sending">发送中&#8230;</string>-->
 
     <string name="empty" />
 
     <string name="edit_input_hint">请输入</string>
     <string name="edit_empty_hint">不能为空</string>
     <string name="edit_format_error">格式错误</string>
-    <string name="edit_input_hint_format">请输入%1$s</string>
-    <string name="edit_empty_hint_format">%1$s不能为空</string>
-    <string name="edit_format_error_format">%1$s格式错误</string>
+<!--    <string name="edit_input_hint_format">请输入%1$s</string>-->
+<!--    <string name="edit_empty_hint_format">%1$s不能为空</string>-->
+<!--    <string name="edit_format_error_format">%1$s格式错误</string>-->
 
-    <string name="badge_overflow">%1$d+</string>
-    <string name="date_picker_title">%1$d年 %2$d月 %3$d日 星期%4$s</string>
+<!--    <string name="badge_overflow">%1$d+</string>-->
+<!--    <string name="date_picker_title">%1$d年 %2$d月 %3$d日 星期%4$s</string>-->
 
-    <string name="year">年</string>
-    <string name="month">月</string>
-    <string name="day">日</string>
+<!--    <string name="year">年</string>-->
+<!--    <string name="month">月</string>-->
+<!--    <string name="day">日</string>-->
 
-    <string name="week_format">周%1$s</string>
-    <string name="sunday">周日</string>
-    <string name="monday">周一</string>
-    <string name="tuesday">周二</string>
-    <string name="wednesday">周三</string>
-    <string name="thursday">周四</string>
-    <string name="friday">周五</string>
-    <string name="saturday">周六</string>
+<!--    <string name="week_format">周%1$s</string>-->
+<!--    <string name="sunday">周日</string>-->
+<!--    <string name="monday">周一</string>-->
+<!--    <string name="tuesday">周二</string>-->
+<!--    <string name="wednesday">周三</string>-->
+<!--    <string name="thursday">周四</string>-->
+<!--    <string name="friday">周五</string>-->
+<!--    <string name="saturday">周六</string>-->
 
     <string name="str_number_zero">0</string>
-    <string name="str_number_max">999999999</string>
+    <string name="str_number_max">2147483647</string>
     <string name="str_number_money">0.00</string>
 
     <string name="str_date">2017–07–07 07:07</string>
     <string name="str_date_short">2017–07–07</string>
     <string name="str_date_time">07:07</string>
 
-    <string name="str_text">理想是人生的太阳</string>
+    <string name="str_text">Ideal is the sun of life</string>
     <string name="str_text_long">On the way home after watching a ballet performance, the kindergarten teacher asked her students what they thought of it. The smallest girl in the class said she wished the dancers were taller so that they would not have to stand on their toes all the time.</string>
 </resources>

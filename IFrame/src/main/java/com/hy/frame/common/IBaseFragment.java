@@ -11,7 +11,7 @@ import android.view.View;
 public interface IBaseFragment<F> {
 
     /**
-     * 页面恢复显示 第二季展示调用
+     * 页面恢复显示 第二次展示调用
      */
     void onRestart();
 

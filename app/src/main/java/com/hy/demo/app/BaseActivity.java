@@ -24,4 +24,9 @@ public abstract class BaseActivity extends com.hy.frame.ui.simple.BaseActivity {
         getTemplateController().setTitle(titleId);
         getTemplateController().setHeaderRightTxt(getString(strRightId));
     }
+
+    protected void initHeader(int drawLeft, int titleId) {
+        getTemplateController().setHeaderLeft(drawLeft);
+        getTemplateController().setTitle(titleId);
+    }
 }

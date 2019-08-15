@@ -8,12 +8,6 @@
 
     <include layout="@layout/in_header" />
 
-    <FrameLayout
-        android:id="@id/base_cMain"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?attr/appBackground">
-
-    </FrameLayout>
+    <include layout="@layout/v_base_fragment" />
 
 </LinearLayout>

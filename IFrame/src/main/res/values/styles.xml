@@ -9,6 +9,9 @@
         <item name="android:textColorLink">@color/blue</item>
         <!--        <item name="android:textAppearance">@style/Base_TxtStyle</item>-->
         <!--        <item name="toolbarStyle">@style/Base_CurToolbar</item>-->
+        <item name="android:textViewStyle">@style/Base_TxtStyle</item>
+        <item name="android:editTextStyle">@style/Base_EditStyle</item>
+        <item name="android:buttonStyle">@style/Base_BtnStyle</item>
         <item name="appHeaderHeight">@dimen/header_height</item>
         <item name="appBackground">@color/smoke</item>
         <item name="appThemeColor">@color/blue</item>

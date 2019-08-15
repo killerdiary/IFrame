@@ -14,6 +14,9 @@
     <item name="loading_vLoading" type="id" />
     <item name="loading_txtMessage" type="id" />
 
+    <item name="adapter_holder" type="id" />
+    <item name="adapter_position" type="id" />
+
 <!--    <item name="recycler_rcyList" type="id" />-->
 <!--    <item name="confirm_txtTitle" type="id" />-->
 <!--    <item name="confirm_txtContent" type="id" />-->

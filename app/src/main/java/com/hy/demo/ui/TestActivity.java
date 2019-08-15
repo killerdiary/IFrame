@@ -1,9 +1,7 @@
 package com.hy.demo.ui;
 
-import android.app.Fragment;
 import android.os.Message;
 import android.view.View;
-
 
 import com.hy.demo.app.BaseActivity;
 import com.hy.demo.iframe.R;
@@ -15,7 +13,7 @@ import com.hy.frame.util.MyHandler;
  * time 19-7-11 下午3:27
  * desc 无
  */
-public class MainActivity extends BaseActivity {
+public class TestActivity extends BaseActivity {
     private MyHandler handler = null;
 
     @Override

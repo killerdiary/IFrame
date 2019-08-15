@@ -3,11 +3,17 @@ package com.hy.frame.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.hy.frame.bean.MenuInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * title ResUtil
@@ -204,5 +210,48 @@ public final class ResUtil {
     public static <T extends View> T findViewById(int id, View parent) {
         if (parent != null) return parent.findViewById(id);
         return null;
+    }
+
+
+    /**
+     * 获取菜单列表
+     *
+     * @param xmlId 菜单xml文件的ResourceId
+     */
+    public static List<MenuInfo> getMenus(Context cxt, int xmlId) {
+        List<MenuInfo> menus = new ArrayList<>();
+        // 判断是否到了文件的结尾
+        try {
+            XmlResourceParser xrp = cxt.getResources().getXml(xmlId);
+            MenuInfo menu = null;
+            while (xrp.getEventType() != XmlResourceParser.END_DOCUMENT) {
+                // 文件的内容的起始标签开始，注意这里的起始标签是test.xml文件里面<resources>标签下面的第一个标签
+                if (xrp.getEventType() == XmlResourceParser.START_TAG) {
+                    String tagName = xrp.getName();
+                    int size = xrp.getAttributeCount();
+                    if (tagName.endsWith("item")) {
+                        menu = new MenuInfo();
+                        for (int i = 0; i < size; i++) {
+                            String key = xrp.getAttributeName(i);
+                            String value = xrp.getAttributeValue(i);
+                            if(key.contains("id")){
+                                menu.setId(Integer.parseInt(value.replace("@", "")));
+                            }else  if(key.contains("icon")){
+                                menu.setIcon(Integer.parseInt(value.replace("@", "")));
+                            }else  if(key.contains("title")){
+                                menu.setTitle(Integer.parseInt(value.replace("@", "")));
+                            }else{
+                                menu.putValue(key, value.replace("@", ""));
+                            }
+                        }
+                        menus.add(menu);
+                    }
+                }
+                xrp.next();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return menus;
     }
 }
