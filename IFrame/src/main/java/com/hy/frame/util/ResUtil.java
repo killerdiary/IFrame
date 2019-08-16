@@ -3,6 +3,7 @@ package com.hy.frame.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.os.Build;
 import android.util.DisplayMetrics;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hy.frame.bean.MenuInfo;
+import com.hy.iframe.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,19 @@ import java.util.List;
  * desc  0.5F用于四舍五入 效率高
  */
 public final class ResUtil {
+    /**
+     * 获取默认 designDesignScreenWidth
+     *
+     * @param cxt 上下文
+     * @return int
+     */
+    public static int getDesignScreenWidth(Context cxt) {
+        TypedArray a = cxt.getTheme().obtainStyledAttributes(new int[]{R.attr.designDesignScreenWidth});
+        int width = a.getDimensionPixelSize(0, 0);
+        a.recycle();
+        return width;
+    }
+
     /**
      * 获取屏幕宽度
      *
@@ -234,13 +249,13 @@ public final class ResUtil {
                         for (int i = 0; i < size; i++) {
                             String key = xrp.getAttributeName(i);
                             String value = xrp.getAttributeValue(i);
-                            if(key.contains("id")){
+                            if (key.contains("id")) {
                                 menu.setId(Integer.parseInt(value.replace("@", "")));
-                            }else  if(key.contains("icon")){
+                            } else if (key.contains("icon")) {
                                 menu.setIcon(Integer.parseInt(value.replace("@", "")));
-                            }else  if(key.contains("title")){
+                            } else if (key.contains("title")) {
                                 menu.setTitle(Integer.parseInt(value.replace("@", "")));
-                            }else{
+                            } else {
                                 menu.putValue(key, value.replace("@", ""));
                             }
                         }

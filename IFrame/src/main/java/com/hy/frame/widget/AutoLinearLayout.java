@@ -44,7 +44,7 @@ public class AutoLinearLayout extends LinearLayout implements IAutoDesign {
     @SuppressLint("CustomViewStyleable")
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AutoLinearLayout, defStyleAttr, 0);
-        this.designScreenWidth = a.getDimensionPixelSize(R.styleable.AutoLinearLayout_designScreenWidth, 0);
+        this.designScreenWidth = a.getDimensionPixelSize(R.styleable.AutoLinearLayout_designScreenWidth, ResUtil.getDesignScreenWidth(context));
         this.designScale = calDesignScale();
         int padding = a.getDimensionPixelSize(R.styleable.AutoLinearLayout_designPadding, 0);
         int paddingLeft = a.getDimensionPixelSize(R.styleable.AutoLinearLayout_designPaddingLeft, padding);

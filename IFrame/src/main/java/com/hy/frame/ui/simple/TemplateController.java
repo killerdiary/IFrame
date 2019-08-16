@@ -76,7 +76,7 @@ public class TemplateController implements ITemplateController, View.OnClickList
 
     private int getHeaderHeight() {
         int[] attr = new int[]{R.attr.appHeaderHeight};
-        TypedArray array = getCurContext().getTheme().obtainStyledAttributes(R.style.Base_Theme, attr);
+        TypedArray array = getCurContext().getTheme().obtainStyledAttributes(attr);
         int headerHeight = array.getDimensionPixelSize(0, getResources().getDimensionPixelSize(R.dimen.header_height));
         array.recycle();
         return headerHeight + getStatusBarHeight();

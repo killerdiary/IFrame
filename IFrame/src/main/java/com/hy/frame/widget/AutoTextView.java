@@ -54,7 +54,7 @@ public class AutoTextView extends TextView implements IAutoDesign {
     @SuppressLint("CustomViewStyleable")
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AutoTextView, defStyleAttr, 0);
-        this.designScreenWidth = a.getDimensionPixelSize(R.styleable.AutoTextView_designScreenWidth, 0);
+        this.designScreenWidth = a.getDimensionPixelSize(R.styleable.AutoTextView_designScreenWidth, ResUtil.getDesignScreenWidth(context));
         this.designScale = calDesignScale();
         int padding = a.getDimensionPixelSize(R.styleable.AutoTextView_designPadding, 0);
         int paddingLeft = a.getDimensionPixelSize(R.styleable.AutoTextView_designPaddingLeft, padding);

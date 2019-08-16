@@ -44,7 +44,7 @@ public class AutoFrameLayout extends FrameLayout implements IAutoDesign {
     @SuppressLint("CustomViewStyleable")
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AutoFrameLayout, defStyleAttr, 0);
-        this.designScreenWidth = a.getDimensionPixelSize(R.styleable.AutoFrameLayout_designScreenWidth, 0);
+        this.designScreenWidth = a.getDimensionPixelSize(R.styleable.AutoFrameLayout_designScreenWidth, ResUtil.getDesignScreenWidth(context));
         this.designScale = calDesignScale();
         int padding = a.getDimensionPixelSize(R.styleable.AutoFrameLayout_designPadding, 0);
         int paddingLeft = a.getDimensionPixelSize(R.styleable.AutoFrameLayout_designPaddingLeft, padding);
