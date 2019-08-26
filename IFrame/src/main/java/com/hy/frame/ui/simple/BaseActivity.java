@@ -38,6 +38,11 @@ public abstract class BaseActivity extends Activity implements IBaseUI, IBaseTem
     private Bundle mArgs = null;
     private View mLayout = null;
 
+    private boolean mDestroy;
+    private boolean mPause;
+    private boolean mStop;
+    private boolean mResume;
+
     @Override
     public int getScreenOrientation() {
         return ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
@@ -312,5 +317,48 @@ public abstract class BaseActivity extends Activity implements IBaseUI, IBaseTem
         }
         this.mLayout = cLayout;
         return this.mLayout;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.mPause = false;
+        this.mStop = false;
+        this.mResume = true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        this.mPause = true;
+        this.mResume =false;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        this.mStop = true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.mDestroy = true;
+    }
+
+    public boolean isIDestroy() {
+        return mDestroy;
+    }
+
+    public boolean isIPause() {
+        return mPause;
+    }
+
+    public boolean isIStop() {
+        return mStop;
+    }
+
+    public boolean isIResume() {
+        return mResume;
     }
 }
