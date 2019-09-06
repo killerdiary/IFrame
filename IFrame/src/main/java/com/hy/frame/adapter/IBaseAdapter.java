@@ -44,6 +44,13 @@ public interface IBaseAdapter<T> {
     int getDataCount();
 
     /**
+     * 获取某条数据对应View Id
+     *
+     * @param position 第几条
+     */
+    int getDataId(int position);
+
+    /**
      * 获取某条数据
      *
      * @param position 第几条
