@@ -58,6 +58,11 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter implemen
         return this.mDatas;
     }
 
+    @Override
+    public boolean isBindDataId() {
+        return true;
+    }
+
     /**
      * 会自动设置为当前View的ID
      *
@@ -167,7 +172,8 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter implemen
         } else {
             holder = (BaseHolder) cacheView.getTag(R.id.adapter_holder);
         }
-        cacheView.setId(getDataId(position));
+        if (isBindDataId())
+            cacheView.setId(getDataId(position));
         bindItemData(holder, position);
         return cacheView;
     }

@@ -24,6 +24,11 @@ public class ListAdapter extends BaseAdapter<String> {
     }
 
     @Override
+    public boolean isBindDataId() {
+        return false;
+    }
+
+    @Override
     public int getItemLayoutId() {
         return R.layout.item_menu;
     }

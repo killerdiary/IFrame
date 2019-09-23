@@ -1,4 +1,3 @@
-rootProject.name='AFrame框架'
+rootProject.name='IFrame框架'
 include ':app'
-include ':IFrame'
-//project(':IFrame').name = "IFrame"
+include ':library'
