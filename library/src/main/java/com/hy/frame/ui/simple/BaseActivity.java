@@ -290,8 +290,6 @@ public abstract class BaseActivity extends Activity implements IBaseUI, IBaseTem
     public View initLayout() {
         if (this.mLayout != null) return this.mLayout;
         View cLayout = null;
-        ViewGroup cToolbar;
-        ViewGroup cMain;
         View customView = getLayoutView();
         if (isSingleLayout()) {
             if (customView != null) {
@@ -303,13 +301,19 @@ public abstract class BaseActivity extends Activity implements IBaseUI, IBaseTem
             cLayout = View.inflate(getCurContext(), getBaseLayoutId(), null);
         }
         if (cLayout == null) return null;
-        cToolbar = findViewById(R.id.base_cToolBar, cLayout);
-        cMain = findViewById(R.id.base_cMain, cLayout);
-        if (!isSingleLayout() && cMain != null) {
-            if (customView != null) {
-                cMain.addView(customView);
-            } else if (getLayoutId() != 0) {
-                View.inflate(getCurContext(), getLayoutId(), cMain);
+        ViewGroup cToolbar = findViewById(R.id.base_cToolBar, cLayout);
+        ViewGroup cMain = findViewById(R.id.base_cMain, cLayout);
+        if (!isSingleLayout()) {
+            if (cMain != null) {
+                if (customView != null) {
+                    cMain.addView(customView);
+                } else if (getLayoutId() != 0) {
+                    View.inflate(getCurContext(), getLayoutId(), cMain);
+                }
+            }
+        } else {
+            if (cMain == null && cLayout instanceof ViewGroup) {
+                cMain = (ViewGroup) cLayout;
             }
         }
         if (this.mTemplateController != null) {
@@ -331,7 +335,7 @@ public abstract class BaseActivity extends Activity implements IBaseUI, IBaseTem
     protected void onPause() {
         super.onPause();
         this.mPause = true;
-        this.mResume =false;
+        this.mResume = false;
     }
 
     @Override
