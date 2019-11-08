@@ -54,7 +54,7 @@ public final class FileUtil {
             File file = new File(fDir, dirType);
             // 判断文件夹存在与否，否则创建
             if (!file.exists()) file.mkdirs();
-            return fDir.getPath();
+            return file.getPath();
         }
         return null;
     }
