@@ -1,5 +1,6 @@
 package com.hy.frame.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Message;
 
@@ -30,6 +31,7 @@ public final class TimerUtil implements MyHandler.HandlerListener {
         if (this.wcxt == null) return;
         Context cxt = this.wcxt.get();
         if (cxt == null) return;
+        if (!PmUtil.isContextExisted(cxt)) return;
         if (this.callback == null) return;
         this.callback.doNext();
         if (handler != null && milliseconds > 0)
