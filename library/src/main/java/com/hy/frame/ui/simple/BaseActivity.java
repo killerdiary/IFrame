@@ -16,6 +16,7 @@ import com.hy.frame.common.IBaseApplication;
 import com.hy.frame.common.IBaseTemplateUI;
 import com.hy.frame.common.IBaseUI;
 import com.hy.frame.common.IImageLoader;
+import com.hy.frame.common.ILifeUI;
 import com.hy.frame.common.ITemplateController;
 import com.hy.frame.util.MyLog;
 import com.hy.frame.util.ResUtil;
@@ -27,7 +28,7 @@ import com.hy.iframe.R;
  * time 19-7-11 上午9:59
  * desc 无
  */
-public abstract class BaseActivity extends Activity implements IBaseUI, IBaseTemplateUI, IBaseActivity, View.OnClickListener {
+public abstract class BaseActivity extends Activity implements IBaseUI, ILifeUI, IBaseTemplateUI, IBaseActivity, View.OnClickListener {
 
     private IBaseApplication mApp = null;
     private ITemplateController mTemplateController = null;
@@ -350,18 +351,22 @@ public abstract class BaseActivity extends Activity implements IBaseUI, IBaseTem
         this.mDestroy = true;
     }
 
+    @Override
     public boolean isIDestroy() {
         return mDestroy;
     }
 
+    @Override
     public boolean isIPause() {
         return mPause;
     }
 
+    @Override
     public boolean isIStop() {
         return mStop;
     }
 
+    @Override
     public boolean isIResume() {
         return mResume;
     }
