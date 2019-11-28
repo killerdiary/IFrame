@@ -200,6 +200,15 @@
         <attr name="designPaddingBottom"/>
     </declare-styleable>
 
+    <declare-styleable name="AutoRelativeLayout">
+        <attr name="designScreenWidth"/>
+        <attr name="designPadding"/>
+        <attr name="designPaddingLeft"/>
+        <attr name="designPaddingTop"/>
+        <attr name="designPaddingRight"/>
+        <attr name="designPaddingBottom"/>
+    </declare-styleable>
+
     <declare-styleable name="AutoTextView">
         <attr name="designScreenWidth"/>
         <attr name="designPadding"/>
