@@ -25,18 +25,14 @@ public class LoadingUI implements ILoadingUI {
 
     @Override
     public boolean initLoading(ViewGroup parent) {
-        this.parent = parent;
-        if (!(parent instanceof FrameLayout)) {
-            MyLog.e(getClass(), "Your layout must include 'FrameLayout',the ID must be 'base_cMain'!");
-            return false;
-        }
         if (cLoad != null) return true;
         cLoad = parent.findViewById(R.id.base_cLoad);
         //You need to add the layout
         if (cLoad == null) {
             cLoad = View.inflate(parent.getContext(), R.layout.in_loading, null);
-            this.parent.addView(cLoad, 0);
+            parent.addView(cLoad, 0);
         }
+        this.parent = parent;
         this.txtMessage = cLoad.findViewById(R.id.base_txtMessage);
         this.imgMessage = cLoad.findViewById(R.id.base_imgMessage);
         this.vLoading = cLoad.findViewById(R.id.base_vLoading);
