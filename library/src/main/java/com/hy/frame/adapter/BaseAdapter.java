@@ -138,12 +138,7 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter implemen
 
     @Override
     public void refresh(List<T> datas) {
-        if (this.mDatas != null) {
-            this.mDatas.clear();
-            if (datas != null) this.mDatas.addAll(datas);
-        } else {
-            this.mDatas = datas;
-        }
+        this.mDatas = datas;
         refresh();
     }
 
