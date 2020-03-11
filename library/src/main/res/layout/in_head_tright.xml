@@ -7,7 +7,6 @@
     android:layout_height="?attr/appHeaderHeight"
     android:layout_gravity="right"
     android:background="@drawable/transparent_selector"
-    android:gravity="center"
     android:minWidth="?attr/appHeaderHeight"
     android:padding="@dimen/padding_default"
     android:text="@string/confirm"

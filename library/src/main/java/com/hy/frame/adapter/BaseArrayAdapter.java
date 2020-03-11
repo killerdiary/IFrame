@@ -2,6 +2,8 @@ package com.hy.frame.adapter;
 
 import android.content.Context;
 
+import java.util.List;
+
 /**
  * title 无
  * author heyan
@@ -24,6 +26,18 @@ public abstract class BaseArrayAdapter<T> extends BaseAdapter<T> {
         this.mDatas = datas;
     }
 
+    @Deprecated
+    @Override
+    public void setDatas(List<T> datas) {
+
+    }
+
+    @Deprecated
+    @Override
+    public List<T> getDatas() {
+        return super.getDatas();
+    }
+
     public void setArray(T[] datas) {
         this.mDatas = datas;
     }
@@ -44,6 +58,10 @@ public abstract class BaseArrayAdapter<T> extends BaseAdapter<T> {
         return null;
     }
 
+    @Deprecated
+    @Override
+    public void refresh(List<T> datas) {
+    }
 
     public void refresh(T[] datas) {
         this.mDatas = datas;

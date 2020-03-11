@@ -144,90 +144,90 @@
 <!--        <attr name="mrgMultiChoice" format="boolean" />-->
 <!--    </declare-styleable>-->
 
-    <attr name="designDesignScreenWidth" format="dimension" />
-    <attr name="designPadding" format="dimension" />
-    <attr name="designPaddingLeft" format="dimension" />
-    <attr name="designPaddingTop" format="dimension" />
-    <attr name="designPaddingRight" format="dimension" />
-    <attr name="designPaddingBottom" format="dimension" />
-    <attr name="designTextSize" format="dimension" />
-    <attr name="designDrawLeftWidth" format="dimension" />
-    <attr name="designDrawLeftHeight" format="dimension" />
-    <attr name="designDrawTopWidth" format="dimension" />
-    <attr name="designDrawTopHeight" format="dimension" />
-    <attr name="designDrawRightWidth" format="dimension" />
-    <attr name="designDrawRightHeight" format="dimension" />
-    <attr name="designDrawBottomWidth" format="dimension" />
-    <attr name="designDrawBottomHeight" format="dimension" />
-    <attr name="designDrawPadding" format="dimension" />
-    <attr name="designDrawCenter" format="boolean" />
+<!--    <attr name="designScreenWidth" format="dimension" />-->
+<!--    <attr name="designPadding" format="dimension" />-->
+<!--    <attr name="designPaddingLeft" format="dimension" />-->
+<!--    <attr name="designPaddingTop" format="dimension" />-->
+<!--    <attr name="designPaddingRight" format="dimension" />-->
+<!--    <attr name="designPaddingBottom" format="dimension" />-->
+<!--    <attr name="designTextSize" format="dimension" />-->
+<!--    <attr name="designDrawLeftWidth" format="dimension" />-->
+<!--    <attr name="designDrawLeftHeight" format="dimension" />-->
+<!--    <attr name="designDrawTopWidth" format="dimension" />-->
+<!--    <attr name="designDrawTopHeight" format="dimension" />-->
+<!--    <attr name="designDrawRightWidth" format="dimension" />-->
+<!--    <attr name="designDrawRightHeight" format="dimension" />-->
+<!--    <attr name="designDrawBottomWidth" format="dimension" />-->
+<!--    <attr name="designDrawBottomHeight" format="dimension" />-->
+<!--    <attr name="designDrawPadding" format="dimension" />-->
+<!--    <attr name="designDrawCenter" format="boolean" />-->
 
-    <declare-styleable name="IAutoDesign">
-        <attr name="designScreenWidth"/>
-        <attr name="designPadding"/>
-        <attr name="designPaddingLeft"/>
-        <attr name="designPaddingTop"/>
-        <attr name="designPaddingRight"/>
-        <attr name="designPaddingBottom"/>
-        <attr name="designTextSize"/>
-        <attr name="designDrawLeftWidth"/>
-        <attr name="designDrawLeftHeight"/>
-        <attr name="designDrawTopWidth"/>
-        <attr name="designDrawTopHeight"/>
-        <attr name="designDrawRightWidth"/>
-        <attr name="designDrawRightHeight"/>
-        <attr name="designDrawBottomWidth"/>
-        <attr name="designDrawBottomHeight"/>
-        <attr name="designDrawPadding"/>
-        <attr name="designDrawCenter"/>
-    </declare-styleable>
+<!--    <declare-styleable name="IAutoDesign">-->
+<!--        <attr name="designScreenWidth"/>-->
+<!--        <attr name="designPadding"/>-->
+<!--        <attr name="designPaddingLeft"/>-->
+<!--        <attr name="designPaddingTop"/>-->
+<!--        <attr name="designPaddingRight"/>-->
+<!--        <attr name="designPaddingBottom"/>-->
+<!--        <attr name="designTextSize"/>-->
+<!--        <attr name="designDrawLeftWidth"/>-->
+<!--        <attr name="designDrawLeftHeight"/>-->
+<!--        <attr name="designDrawTopWidth"/>-->
+<!--        <attr name="designDrawTopHeight"/>-->
+<!--        <attr name="designDrawRightWidth"/>-->
+<!--        <attr name="designDrawRightHeight"/>-->
+<!--        <attr name="designDrawBottomWidth"/>-->
+<!--        <attr name="designDrawBottomHeight"/>-->
+<!--        <attr name="designDrawPadding"/>-->
+<!--        <attr name="designDrawCenter"/>-->
+<!--    </declare-styleable>-->
 
-    <declare-styleable name="AutoFrameLayout">
-        <attr name="designScreenWidth"/>
-        <attr name="designPadding"/>
-        <attr name="designPaddingLeft"/>
-        <attr name="designPaddingTop"/>
-        <attr name="designPaddingRight"/>
-        <attr name="designPaddingBottom"/>
-    </declare-styleable>
+<!--    <declare-styleable name="AutoFrameLayout">-->
+<!--        <attr name="designScreenWidth"/>-->
+<!--        <attr name="designPadding"/>-->
+<!--        <attr name="designPaddingLeft"/>-->
+<!--        <attr name="designPaddingTop"/>-->
+<!--        <attr name="designPaddingRight"/>-->
+<!--        <attr name="designPaddingBottom"/>-->
+<!--    </declare-styleable>-->
 
-    <declare-styleable name="AutoLinearLayout">
-        <attr name="designScreenWidth"/>
-        <attr name="designPadding"/>
-        <attr name="designPaddingLeft"/>
-        <attr name="designPaddingTop"/>
-        <attr name="designPaddingRight"/>
-        <attr name="designPaddingBottom"/>
-    </declare-styleable>
+<!--    <declare-styleable name="AutoLinearLayout">-->
+<!--        <attr name="designScreenWidth"/>-->
+<!--        <attr name="designPadding"/>-->
+<!--        <attr name="designPaddingLeft"/>-->
+<!--        <attr name="designPaddingTop"/>-->
+<!--        <attr name="designPaddingRight"/>-->
+<!--        <attr name="designPaddingBottom"/>-->
+<!--    </declare-styleable>-->
 
-    <declare-styleable name="AutoRelativeLayout">
-        <attr name="designScreenWidth"/>
-        <attr name="designPadding"/>
-        <attr name="designPaddingLeft"/>
-        <attr name="designPaddingTop"/>
-        <attr name="designPaddingRight"/>
-        <attr name="designPaddingBottom"/>
-    </declare-styleable>
+<!--    <declare-styleable name="AutoRelativeLayout">-->
+<!--        <attr name="designScreenWidth"/>-->
+<!--        <attr name="designPadding"/>-->
+<!--        <attr name="designPaddingLeft"/>-->
+<!--        <attr name="designPaddingTop"/>-->
+<!--        <attr name="designPaddingRight"/>-->
+<!--        <attr name="designPaddingBottom"/>-->
+<!--    </declare-styleable>-->
 
-    <declare-styleable name="AutoTextView">
-        <attr name="designScreenWidth"/>
-        <attr name="designPadding"/>
-        <attr name="designPaddingLeft"/>
-        <attr name="designPaddingTop"/>
-        <attr name="designPaddingRight"/>
-        <attr name="designPaddingBottom"/>
-        <attr name="designTextSize"/>
-        <attr name="designDrawLeftWidth"/>
-        <attr name="designDrawLeftHeight"/>
-        <attr name="designDrawTopWidth"/>
-        <attr name="designDrawTopHeight"/>
-        <attr name="designDrawRightWidth"/>
-        <attr name="designDrawRightHeight"/>
-        <attr name="designDrawBottomWidth"/>
-        <attr name="designDrawBottomHeight"/>
-        <attr name="designDrawPadding"/>
-        <attr name="designDrawCenter"/>
-    </declare-styleable>
+<!--    <declare-styleable name="AutoTextView">-->
+<!--        <attr name="designScreenWidth"/>-->
+<!--        <attr name="designPadding"/>-->
+<!--        <attr name="designPaddingLeft"/>-->
+<!--        <attr name="designPaddingTop"/>-->
+<!--        <attr name="designPaddingRight"/>-->
+<!--        <attr name="designPaddingBottom"/>-->
+<!--        <attr name="designTextSize"/>-->
+<!--        <attr name="designDrawLeftWidth"/>-->
+<!--        <attr name="designDrawLeftHeight"/>-->
+<!--        <attr name="designDrawTopWidth"/>-->
+<!--        <attr name="designDrawTopHeight"/>-->
+<!--        <attr name="designDrawRightWidth"/>-->
+<!--        <attr name="designDrawRightHeight"/>-->
+<!--        <attr name="designDrawBottomWidth"/>-->
+<!--        <attr name="designDrawBottomHeight"/>-->
+<!--        <attr name="designDrawPadding"/>-->
+<!--        <attr name="designDrawCenter"/>-->
+<!--    </declare-styleable>-->
 
 
 

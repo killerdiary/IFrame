@@ -201,8 +201,8 @@ public final class FormatUtil {
         return datas.length == 0;
     }
 
-    public static void main(String[] args) {
-        String[] t = null;
-        System.out.println(isEmpty(t));
-    }
+//    public static void main(String[] args) {
+//        String[] t = null;
+//        System.out.println(isEmpty(t));
+//    }
 }

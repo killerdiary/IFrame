@@ -16,7 +16,12 @@ public abstract class BaseActivity extends com.hy.frame.ui.simple.BaseActivity {
 
     @Override
     public int getScreenOrientation() {
-        return ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
+        return ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+    }
+
+    @Override
+    public boolean isTranslucentStatus() {
+        return true;
     }
 
     protected void initHeader(int drawLeft, int titleId, int strRightId) {

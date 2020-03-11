@@ -24,18 +24,18 @@ import java.util.List;
  * desc  0.5F用于四舍五入 效率高
  */
 public final class ResUtil {
-    /**
-     * 获取默认 designDesignScreenWidth
-     *
-     * @param cxt 上下文
-     * @return int
-     */
-    public static int getDesignScreenWidth(Context cxt) {
-        TypedArray a = cxt.getTheme().obtainStyledAttributes(new int[]{R.attr.designDesignScreenWidth});
-        int width = a.getDimensionPixelSize(0, 0);
-        a.recycle();
-        return width;
-    }
+//    /**
+//     * 获取默认 designDesignScreenWidth
+//     *
+//     * @param cxt 上下文
+//     * @return int
+//     */
+//    public static int getDesignScreenWidth(Context cxt) {
+//        TypedArray a = cxt.getTheme().obtainStyledAttributes(new int[]{R.attr.designScreenWidth});
+//        int width = a.getDimensionPixelSize(0, 0);
+//        a.recycle();
+//        return width;
+//    }
 
     /**
      * 获取屏幕宽度

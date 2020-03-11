@@ -79,7 +79,7 @@ public class TemplateController implements ITemplateController, View.OnClickList
         TypedArray array = getCurContext().getTheme().obtainStyledAttributes(attr);
         int headerHeight = array.getDimensionPixelSize(0, getResources().getDimensionPixelSize(R.dimen.header_height));
         array.recycle();
-        return headerHeight + getStatusBarHeight();
+        return headerHeight;
     }
 
     private void initToolbar() {
@@ -90,7 +90,7 @@ public class TemplateController implements ITemplateController, View.OnClickList
                 cToolbar.setPadding(0, statusBarHeight, 0, 0);
                 if (cToolbar.getLayoutParams() != null) {
                     ViewGroup.LayoutParams params = cToolbar.getLayoutParams();
-                    params.height = getHeaderHeight();
+                    params.height = getHeaderHeight() + statusBarHeight;
                     cToolbar.setLayoutParams(params);
                 }
             }
@@ -125,16 +125,19 @@ public class TemplateController implements ITemplateController, View.OnClickList
         initHeaderLeft(0, leftStr);
     }
 
+    @SuppressLint("RtlHardcoded")
     private void initHeaderLeft(int drawLeft, CharSequence leftStr) {
         if (this.cToolbar == null) return;
         View v = findViewById(R.id.base_vLeft, this.cToolbar);
         if (v == null) {
-            if (drawLeft != 0) {
-                View.inflate(getCurContext(), R.layout.in_head_left, this.cToolbar);
+            boolean isImage = drawLeft != 0;
+            if (isImage) {
+                v = View.inflate(getCurContext(), R.layout.in_head_left, null);
             } else {
-                View.inflate(getCurContext(), R.layout.in_head_tleft, this.cToolbar);
+                v = View.inflate(getCurContext(), R.layout.in_head_tleft, null);
             }
-            v = findViewById(R.id.base_vLeft, this.cToolbar);
+            v.setOnClickListener(this);
+            this.cToolbar.addView(v, generateHeadActionLayoutParams(isImage, Gravity.LEFT));
         }
         if (v instanceof ImageView) {
             ((ImageView) v).setImageResource(drawLeft);
@@ -171,8 +174,11 @@ public class TemplateController implements ITemplateController, View.OnClickList
      * @param gravity Gravity
      * @return LayoutParams
      */
-    protected ViewGroup.LayoutParams generateHeadActionLayoutParams(int gravity) {
+    protected ViewGroup.LayoutParams generateHeadActionLayoutParams(boolean isImage, int gravity) {
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, getHeaderHeight());
+        if(isImage){
+            lp.width = getHeaderHeight();
+        }
         lp.gravity = gravity;
         return lp;
     }
@@ -190,7 +196,7 @@ public class TemplateController implements ITemplateController, View.OnClickList
             }
             v.setId(id);
             v.setOnClickListener(this);
-            this.cToolbar.addView(v, generateHeadActionLayoutParams(Gravity.RIGHT));
+            this.cToolbar.addView(v, generateHeadActionLayoutParams(isImage, Gravity.RIGHT));
         }
         if (drawRightOrStrId == 0 && pathOrStr == null) {
             //remove

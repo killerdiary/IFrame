@@ -30,6 +30,7 @@
         <item name="android:textColorLink">@color/blue</item>
         <item name="android:textSize">@dimen/txt_default</item>
         <item name="android:textStyle">normal</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="Base_EditStyle" parent="Base_TxtStyle">
