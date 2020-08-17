@@ -10,7 +10,7 @@ import android.widget.Toast;
  * time 19-7-10 上午11:09
  * desc 无
  */
-public final class MyToast {
+public final class ToastUtil {
     private static Toast toast = null;
 
     public static void show(Context cxt, int strId) {
@@ -24,12 +24,9 @@ public final class MyToast {
     @SuppressLint("ShowToast")
     public static void show(Context cxt, CharSequence msg, int duration) {
         try {
-            if (toast == null) {
-                toast = Toast.makeText(cxt.getApplicationContext(), msg, duration);
-            } else {
-                toast.setText(msg);
-                toast.setDuration(duration);
-            }
+            //去掉应用名显示
+            Toast toast = Toast.makeText(cxt.getApplicationContext(), null, duration);
+            toast.setText(msg);
             toast.show();
         } catch (Exception ignored) {
 

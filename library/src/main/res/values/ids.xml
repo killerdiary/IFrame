@@ -16,24 +16,4 @@
 
     <item name="adapter_holder" type="id" />
     <item name="adapter_position" type="id" />
-
-<!--    <item name="recycler_rcyList" type="id" />-->
-<!--    <item name="confirm_txtTitle" type="id" />-->
-<!--    <item name="confirm_txtContent" type="id" />-->
-<!--    <item name="confirm_btnCancel" type="id" />-->
-<!--    <item name="confirm_btnConfirm" type="id" />-->
-<!--    <item name="date_picker_btnCancel" type="id" />-->
-<!--    <item name="date_picker_btnConfirm" type="id" />-->
-<!--    <item name="date_picker_lwvYear" type="id" />-->
-<!--    <item name="date_picker_lwvMonth" type="id" />-->
-<!--    <item name="date_picker_lwvDay" type="id" />-->
-<!--    <item name="date_picker_txtTitle" type="id" />-->
-
-<!--    <item name="picker_btnCancel" type="id" />-->
-<!--    <item name="picker_btnConfirm" type="id" />-->
-<!--    <item name="picker_lwvList" type="id" />-->
-<!--    <item name="picker_lwvList1" type="id" />-->
-<!--    <item name="picker_lwvList2" type="id" />-->
-
-
 </resources>

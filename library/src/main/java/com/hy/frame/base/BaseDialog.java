@@ -1,4 +1,4 @@
-package com.hy.frame.ui.dialog;
+package com.hy.frame.base;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -55,20 +55,20 @@ public abstract class BaseDialog extends android.app.Dialog implements IBaseUI, 
 //    public int getLayoutId() {
 //        return 0;
 //    }
+    public abstract int getLayoutId();
 
-    @Override
+
     public View getLayoutView() {
         return null;
     }
 
     @Override
-    public View initLayout() {
+    public void initLayout() {
         View customView = getLayoutView();
         if (customView != null)
             setContentView(customView);
         else
             setContentView(getLayoutId());
-        return null;
     }
 
     @Override
@@ -114,7 +114,7 @@ public abstract class BaseDialog extends android.app.Dialog implements IBaseUI, 
 //
 //    }
 
-    @Override
+
     public <T extends View> T findViewById(int id, View parent) {
         if (parent != null) return parent.findViewById(id);
         return findViewById(id);
@@ -124,14 +124,13 @@ public abstract class BaseDialog extends android.app.Dialog implements IBaseUI, 
         return setOnClickListener(id, null);
     }
 
-    @Override
+
     public <T extends View> T setOnClickListener(int id, View parent) {
         T v = findViewById(id, parent);
         if (v != null) v.setOnClickListener(this);
         return v;
     }
 
-    @Override
     public boolean isFastClick() {
         long time = System.currentTimeMillis();
         if (time - this.mLastTime < 500L) return true;

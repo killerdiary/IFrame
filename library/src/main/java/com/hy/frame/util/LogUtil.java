@@ -13,7 +13,7 @@ import java.io.PrintWriter;
  * time 19-7-8 下午4:05
  * desc 无
  */
-public final class MyLog {
+public final class LogUtil {
     private static final String TAG = "HyLog";
     private static final long MAX_LOG_FILE = 1024L * 1024 * 8; //8MB
 
@@ -65,7 +65,7 @@ public final class MyLog {
         println(Log.ERROR, tag, msg);
     }
 
-    private static IMPL impl = null;
+    private static ILogger impl = null;
 
     /**
      * 日志输出
@@ -99,7 +99,29 @@ public final class MyLog {
         impl.setLogDir(logDir);
     }
 
-    static final class IMPL {
+    public static void setLogger(ILogger logger){
+
+    }
+
+    interface ILogger {
+        void println(int priority, String tag, Object msg);
+
+        boolean isLoggable();
+
+        void setLoggable(boolean enable);
+
+        boolean isEnableFile();
+
+        void setEnableFile(boolean enableFile);
+
+        String getLogDir();
+
+        void setLogDir(String logDir);
+
+        File getLogFile();
+    }
+
+    static final class IMPL implements ILogger {
         /**
          * 是否开启日志
          */
@@ -117,10 +139,12 @@ public final class MyLog {
          */
         private File logFile = null;
 
+        @Override
         public boolean isLoggable() {
             return isLoggable;
         }
 
+        @Override
         public void setLoggable(boolean loggable) {
             isLoggable = loggable;
         }
@@ -137,6 +161,7 @@ public final class MyLog {
             return logDir;
         }
 
+        @Override
         public void setLogDir(String logDir) {
             this.logDir = logDir;
             this.isEnableFile = logDir != null && logDir.length() > 0;
@@ -179,7 +204,8 @@ public final class MyLog {
             return file;
         }
 
-        private void println(int priority, String tag, Object msg) {
+        @Override
+        public void println(int priority, String tag, Object msg) {
             if (isLoggable) {
                 if (tag != null && tag.length() > 0)
                     Log.println(priority, TAG, String.format("%s: %s", tag, String.valueOf(msg)));

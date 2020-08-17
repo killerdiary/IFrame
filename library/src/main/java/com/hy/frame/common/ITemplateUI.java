@@ -4,19 +4,102 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * title ITemplateController
+ * title ITemplateUI
  * author heyan
  * time 19-7-10 下午12:14
  * desc 无
  */
-public interface ITemplateController {
+public interface ITemplateUI {
+    /**
+     * 是否启用唯一布局，否者使用公有模板[ITemplateControl]
+     */
+    boolean isSingleLayout();
+
+    /**
+     * LayoutId 默认值为0
+     */
+    int getBaseLayoutId();
+
+    /**
+     * LayoutId 默认值为0
+     */
+    int getLayoutId();
+
+    /**
+     * Layout View 不为空时优先使用
+     */
+    View getLayoutView();
+
+    /**
+     * 根布局
+     */
+    View getRootLayout();
+
+
+    /**
+     * 是否开启透明状态栏
+     */
+    boolean isTranslucentStatus();
+
+    /**
+     * 状态栏高度
+     */
+    int getStatusBarHeight();
+
+    /**
+     * 初始化基本布局
+     */
+    void initLayout();
+
+    /**
+     * 初始化布局
+     */
+    void initView();
+
     /**
      * 初始化
-     *
-     * @param cToolbar 标题栏
-     * @param cMain    主布局
      */
-    void init(ViewGroup cToolbar, ViewGroup cMain);
+    ITemplateUI build();
+
+    /**
+     * inflate
+     */
+    View inflate(int resource, ViewGroup root);
+
+    /**
+     * 是否是快速点击
+     */
+    boolean isFastClick();
+
+    /**
+     * 获取 控件
+     *
+     * @param id 行布局中某个组件的id
+     */
+    <T extends View> T findViewById(int id);
+
+    /**
+     * 获取 控件
+     *
+     * @param id     行布局中某个组件的id
+     * @param parent parent
+     */
+    <T extends View> T findViewById(int id, View parent);
+
+    /**
+     * 获取并绑定点击
+     *
+     * @param id 行布局中某个组件的id
+     */
+    <T extends View> T setOnClickListener(int id);
+
+    /**
+     * 获取并绑定点击
+     *
+     * @param id     行布局中某个组件的id
+     * @param parent parent
+     */
+    <T extends View> T setOnClickListener(int id, View parent);
 
     /**
      * 设置标题

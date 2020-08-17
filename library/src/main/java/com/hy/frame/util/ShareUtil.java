@@ -8,26 +8,26 @@ import android.content.SharedPreferences;
  * @author HeYan
  * @time 2014年12月17日 下午5:47:46
  */
-public class MyShare {
+public class ShareUtil {
 
-    private static MyShare instance;
+    private static ShareUtil instance;
     private SharedPreferences share;
     public static final String SHARE_DEFAULT = "SHARE_DEFAULT";
 
     /**
      * 获取实例
      */
-    public static MyShare get(Context context) {
+    public static ShareUtil get(Context context) {
         if (instance == null)
-            instance = new MyShare(context);
+            instance = new ShareUtil(context);
         return instance;
     }
 
-    public MyShare(Context context) {
+    public ShareUtil(Context context) {
         this(context, SHARE_DEFAULT);
     }
 
-    public MyShare(Context context, String shareName) {
+    public ShareUtil(Context context, String shareName) {
         share = getShared(context, shareName);
     }
 

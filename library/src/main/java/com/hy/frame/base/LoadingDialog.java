@@ -1,4 +1,4 @@
-package com.hy.frame.ui.dialog;
+package com.hy.frame.base;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -14,7 +14,7 @@ import com.hy.iframe.R;
  * time 19-7-12 下午3:38
  * desc 无
  */
-public class LoadingDialog extends com.hy.frame.ui.dialog.BaseDialog implements ILoadingDialog {
+public class LoadingDialog extends BaseDialog implements ILoadingDialog {
     private TextView txtMessage = null;
     private CharSequence message;
 

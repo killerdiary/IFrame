@@ -1,13 +1,11 @@
-package com.hy.frame.ui.simple;
+package com.hy.frame.base;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hy.frame.common.ILoadingUI;
-import com.hy.frame.util.MyLog;
 import com.hy.iframe.R;
 
 /**

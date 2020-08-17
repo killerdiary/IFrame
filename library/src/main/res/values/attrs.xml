@@ -8,6 +8,9 @@
     <attr name="appTitleBarBg" format="reference|color" />
     <attr name="appProgressColor" format="reference|color" />
     <attr name="appControlHighlight" format="reference|color" />
+    <attr name="appTextStyle" format="reference" />
+    <attr name="appEditStyle" format="reference" />
+    <attr name="appButtonStyle" format="reference" />
 <!--    <declare-styleable name="RoundImageView">-->
 <!--        <attr name="rivRadius" format="dimension" />-->
 <!--    </declare-styleable>-->

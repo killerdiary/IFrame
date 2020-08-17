@@ -1,4 +1,4 @@
-package com.hy.frame.ui.simple;
+package com.hy.frame.base;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,20 +6,16 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import com.hy.frame.common.BaseApplication;
+import com.hy.frame.common.IAppUI;
+import com.hy.frame.common.IApplication;
 import com.hy.frame.common.IBaseActivity;
-import com.hy.frame.common.IBaseApplication;
-import com.hy.frame.common.IBaseTemplateUI;
 import com.hy.frame.common.IBaseUI;
 import com.hy.frame.common.IImageLoader;
 import com.hy.frame.common.ILifeUI;
-import com.hy.frame.common.ITemplateController;
-import com.hy.frame.util.MyLog;
-import com.hy.frame.util.ResUtil;
+import com.hy.frame.common.ITemplateUI;
+import com.hy.frame.util.LogUtil;
 import com.hy.iframe.R;
 
 /**
@@ -28,16 +24,14 @@ import com.hy.iframe.R;
  * time 19-7-11 上午9:59
  * desc 无
  */
-public abstract class BaseActivity extends Activity implements IBaseUI, ILifeUI, IBaseTemplateUI, IBaseActivity, View.OnClickListener {
+public abstract class BaseActivity<T extends BaseTemplateUI> extends Activity implements IBaseUI, ILifeUI, IAppUI, IBaseActivity {
 
-    private IBaseApplication mApp = null;
-    private ITemplateController mTemplateController = null;
+    private IApplication mApp = null;
     private IImageLoader mImageLoader = null;
+    private T mTemplateUI = null;
     private String mLastSkipAct = null; //获取上一级的Activity名
 
-    private long mLastTime;
     private Bundle mArgs = null;
-    private View mLayout = null;
 
     private boolean mDestroy;
     private boolean mPause;
@@ -59,19 +53,16 @@ public abstract class BaseActivity extends Activity implements IBaseUI, ILifeUI,
         return this.mLastSkipAct;
     }
 
-    @Override
-    public boolean isSingleLayout() {
-        return true;
-    }
+    /**
+     * 设置模板[ITemplateControl]
+     */
+    public abstract T buildTemplateUI();
 
-    @Override
-    public ITemplateController getTemplateController() {
-        return this.mTemplateController;
-    }
-
-    @Override
-    public ITemplateController buildTemplateController() {
-        return new TemplateController(this);
+    /**
+     * 获取模板[ITemplateControl]
+     */
+    public T getTemplateUI() {
+        return this.mTemplateUI;
     }
 
     @Override
@@ -85,17 +76,7 @@ public abstract class BaseActivity extends Activity implements IBaseUI, ILifeUI,
     }
 
     @Override
-    public boolean isTranslucentStatus() {
-        return false;
-    }
-
-    @Override
-    public int getStatusBarHeight() {
-        return ResUtil.getStatusBarHeight(getCurContext());
-    }
-
-    @Override
-    public IBaseApplication getCurApp() {
+    public IApplication getCurApp() {
         return this.mApp;
     }
 
@@ -169,25 +150,11 @@ public abstract class BaseActivity extends Activity implements IBaseUI, ILifeUI,
         return this;
     }
 
-    @Override
-    public int getBaseLayoutId() {
-        return R.layout.v_base;
-    }
-//    @Override
-//    public int getLayoutId() {
-//        return 0;
-//    }
-
-    @Override
-    public View getLayoutView() {
-        return null;
-    }
-//
 //    @Override
 //    public void initView() {
 //
 //    }
-//
+
 //    @Override
 //    public void initData() {
 //
@@ -198,33 +165,6 @@ public abstract class BaseActivity extends Activity implements IBaseUI, ILifeUI,
 //
 //    }
 
-    @Override
-    public <T extends View> T findViewById(int id, View parent) {
-        if (parent != null) return parent.findViewById(id);
-        return findViewById(id);
-    }
-
-    @Override
-    public <T extends View> T setOnClickListener(int id, View parent) {
-        T v = findViewById(id, parent);
-        if (v != null) v.setOnClickListener(this);
-        return v;
-    }
-
-
-    @Override
-    public boolean isFastClick() {
-        long time = System.currentTimeMillis();
-        if (time - this.mLastTime < 500L) return true;
-        this.mLastTime = time;
-        return false;
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (!isFastClick())
-            onViewClick(v);
-    }
 
     @Override
     public void onBackPressed() {
@@ -249,16 +189,7 @@ public abstract class BaseActivity extends Activity implements IBaseUI, ILifeUI,
         if (getScreenOrientation() != ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED) {
             setRequestedOrientation(getScreenOrientation());
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            if (isTranslucentStatus()) {
-                getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            } else {
-                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            }
-        }
         initLayout();
-        if (this.mLayout != null)
-            setContentView(this.mLayout);
         initView();
         initData();
     }
@@ -270,11 +201,11 @@ public abstract class BaseActivity extends Activity implements IBaseUI, ILifeUI,
      */
     private boolean initAttrs() {
         if (!(getApplication() instanceof BaseApplication)) {
-            MyLog.e("Application configuration exception, currently application must extends BaseApplication");
+            LogUtil.e("Application configuration exception, currently application must extends BaseApplication");
             setContentView(R.layout.v_frame_warn);
             return false;
         }
-        this.mApp = (IBaseApplication) getApplication();
+        this.mApp = (IApplication) getApplication();
         if (getIntent().hasExtra(ARG_BUNDLE))
             this.mArgs = getIntent().getBundleExtra(ARG_BUNDLE);
         else
@@ -282,46 +213,33 @@ public abstract class BaseActivity extends Activity implements IBaseUI, ILifeUI,
         if (this.mArgs != null)
             this.mLastSkipAct = this.mArgs.getString(ARG_LAST_ACT);
         this.mApp.getActivityCache().add(this);
-        this.mTemplateController = buildTemplateController();
-        this.mImageLoader = buildImageLoader();
         return true;
     }
 
     @Override
-    public View initLayout() {
-        if (this.mLayout != null) return this.mLayout;
-        View cLayout = null;
-        View customView = getLayoutView();
-        if (isSingleLayout()) {
-            if (customView != null) {
-                cLayout = customView;
-            } else if (getLayoutId() != 0) {
-                cLayout = View.inflate(getCurContext(), getLayoutId(), null);
-            }
-        } else if (getBaseLayoutId() != 0) {
-            cLayout = View.inflate(getCurContext(), getBaseLayoutId(), null);
-        }
-        if (cLayout == null) return null;
-        ViewGroup cToolbar = findViewById(R.id.base_cToolBar, cLayout);
-        ViewGroup cMain = findViewById(R.id.base_cMain, cLayout);
-        if (!isSingleLayout()) {
-            if (cMain != null) {
-                if (customView != null) {
-                    cMain.addView(customView);
-                } else if (getLayoutId() != 0) {
-                    View.inflate(getCurContext(), getLayoutId(), cMain);
+    public void initLayout() {
+        T mTemplateUI = buildTemplateUI();
+        if (mTemplateUI != null) {
+            mTemplateUI.build();
+            setContentView(mTemplateUI.getRootLayout());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                if (mTemplateUI.isTranslucentStatus()) {
+                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                } else {
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 }
             }
-        } else {
-            if (cMain == null && cLayout instanceof ViewGroup) {
-                cMain = (ViewGroup) cLayout;
-            }
         }
-        if (this.mTemplateController != null) {
-            this.mTemplateController.init(cToolbar, cMain);
+        this.mTemplateUI = mTemplateUI;
+        this.mImageLoader = buildImageLoader();
+    }
+
+    @Override
+    public void initView() {
+        ITemplateUI mTemplateUI = getTemplateUI();
+        if (mTemplateUI != null) {
+            mTemplateUI.initView();
         }
-        this.mLayout = cLayout;
-        return this.mLayout;
     }
 
     @Override

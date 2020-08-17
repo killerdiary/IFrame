@@ -2,6 +2,7 @@ package com.hy.frame.util;
 
 import android.content.Context;
 import android.os.Build;
+import android.os.Environment;
 import android.os.StatFs;
 
 import java.io.File;
@@ -29,32 +30,24 @@ public final class FileUtil {
      * @return 路径
      */
     public static String getCachePath(Context cxt, String dirType, boolean sdFirst) {
-        File fDir = null;
+        File fDir;
         if (sdFirst) {
             try {
-                fDir = cxt.getExternalFilesDir(DIR_CACHE);
-                if (fDir != null && !fDir.exists()) fDir.mkdirs();
+                fDir = cxt.getExternalFilesDir(dirType);
+                if (fDir != null && !fDir.exists())
+                    fDir.mkdirs();
+                if (fDir != null && fDir.exists())
+                    return fDir.getPath();
             } catch (Exception ignored) {
-                fDir = null;
             }
         }
-
         try {
-            if (fDir == null) {
-                File dir = cxt.getFilesDir();
-                if (dir == null) return null;
-                fDir = new File(dir.getParentFile(), DIR_CACHE);
-                if (!fDir.exists()) fDir.mkdirs();
-            }
+            fDir = cxt.getFileStreamPath(dirType);
+            if (fDir != null && !fDir.exists())
+                fDir.mkdirs();
+            if (fDir != null && fDir.exists())
+                return fDir.getPath();
         } catch (Exception ignored) {
-            fDir = null;
-        }
-        if (fDir != null && fDir.exists()) {
-            if (dirType == null || dirType.length() == 0) return fDir.getPath();
-            File file = new File(fDir, dirType);
-            // 判断文件夹存在与否，否则创建
-            if (!file.exists()) file.mkdirs();
-            return file.getPath();
         }
         return null;
     }
@@ -283,4 +276,22 @@ public final class FileUtil {
         return true;
     }
 
+    /**
+     * 获取公用储存路径 /storage/emulated/0/... 在6.0及之后的系统需要动态申请权限，这些目录的内容不会随着应用的卸载而消失。
+     *
+     * @param dirType 子目录名称
+     * @return 路径
+     */
+    public static String getPubFilePath(String dirType) {
+        File fDir;
+        try {
+            fDir = Environment.getExternalStoragePublicDirectory(dirType);
+            if (fDir != null && !fDir.exists())
+                fDir.mkdirs();
+            if (fDir != null && fDir.exists())
+                return fDir.getPath();
+        } catch (Exception ignored) {
+        }
+        return null;
+    }
 }

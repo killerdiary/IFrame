@@ -1,10 +1,11 @@
-package com.hy.frame.ui.simple;
+package com.hy.frame.base;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build;
+import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,66 +13,192 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hy.frame.common.IBaseTemplateUI;
+import com.hy.frame.common.IAppUI;
 import com.hy.frame.common.IBaseUI;
 import com.hy.frame.common.IImageLoader;
 import com.hy.frame.common.ILoadingDialog;
 import com.hy.frame.common.ILoadingUI;
-import com.hy.frame.common.ITemplateController;
-import com.hy.frame.util.MyToast;
+import com.hy.frame.common.ITemplateUI;
+import com.hy.frame.util.ResUtil;
+import com.hy.frame.util.ToastUtil;
 import com.hy.iframe.R;
 
 /**
- * title 无
- * author heyan
- * time 19-7-11 上午11:34
+ * title BaseTemplateUI
+ * author HeYan
+ * time 20-8-15 下午5:57
  * desc 无
  */
-public class TemplateController implements ITemplateController, View.OnClickListener {
+public abstract class BaseTemplateUI implements ITemplateUI, View.OnClickListener {
 
-    protected IBaseTemplateUI iUI;
+    protected IAppUI iUI;
+    protected View mLayout = null;
     protected ViewGroup cToolbar = null;
     protected ViewGroup cMain = null;
     protected ILoadingUI iLoadingUI = null;
     protected ILoadingDialog iLoadingDialog = null;
+    protected SparseArray<View> views;
+    private long mLastTime;
 
-
-    public TemplateController(IBaseTemplateUI iUI) {
+    public BaseTemplateUI(IAppUI iUI) {
         this.iUI = iUI;
     }
 
     @Override
-    public void init(ViewGroup cToolbar, ViewGroup cMain) {
-        this.cToolbar = cToolbar;
-        this.cMain = cMain;
-        initToolbar();
-    }
-
-    private Context getCurContext() {
-        return this.iUI.getCurActivity();
-    }
-
-    private Resources getResources() {
-        return getCurContext().getResources();
-    }
-
-    private <T extends View> T findViewById(int id, View parent) {
-        if (iUI instanceof IBaseUI)
-            return ((IBaseUI) iUI).findViewById(id, parent);
-        return null;
-    }
-
-    private boolean isFastClick() {
-        if (iUI instanceof IBaseUI)
-            return ((IBaseUI) iUI).isFastClick();
+    public boolean isSingleLayout() {
         return false;
     }
 
-    private int getStatusBarHeight() {
+    /**
+     * LayoutId 默认值为0
+     */
+    @Override
+    public int getBaseLayoutId() {
+        return R.layout.v_base;
+    }
+
+//    /**
+//     * LayoutId 默认值为0
+//     */
+//    @Override
+//    public int getLayoutId() {
+//        return 0;
+//    }
+
+
+    /**
+     * Layout View 不为空时优先使用
+     */
+    @Override
+    public View getLayoutView() {
+        return null;
+    }
+
+    @Override
+    public View getRootLayout() {
+        return this.mLayout;
+    }
+
+    @Override
+    public View inflate(int resource, ViewGroup root) {
+        return View.inflate(getCurContext(), resource, root);
+    }
+
+    @Override
+    public boolean isFastClick() {
+        long time = System.currentTimeMillis();
+        if (time - this.mLastTime < 500L) return true;
+        this.mLastTime = time;
+        return false;
+    }
+
+    @Override
+    public ITemplateUI build() {
+        initLayout();
+        initToolbar();
+        return this;
+    }
+
+    @Override
+    public void initLayout() {
+        if (this.mLayout != null) return;
+        View cLayout = null;
+        View customView = getLayoutView();
+        if (isSingleLayout()) {
+            if (customView != null) {
+                cLayout = customView;
+            } else if (getLayoutId() != 0) {
+                cLayout = View.inflate(getCurContext(), getLayoutId(), null);
+            }
+        } else if (getBaseLayoutId() != 0) {
+            cLayout = View.inflate(getCurContext(), getBaseLayoutId(), null);
+        }
+        if (cLayout == null) return;
+        ViewGroup cToolbar = findViewById(R.id.base_cToolBar, cLayout);
+        ViewGroup cMain = findViewById(R.id.base_cMain, cLayout);
+        if (!isSingleLayout()) {
+            if (cMain != null) {
+                if (customView != null) {
+                    cMain.addView(customView);
+                } else if (getLayoutId() != 0) {
+                    View.inflate(getCurContext(), getLayoutId(), cMain);
+                }
+            }
+        } else {
+            if (cMain == null && cLayout instanceof ViewGroup) {
+                cMain = (ViewGroup) cLayout;
+            }
+        }
+        this.mLayout = cLayout;
+        this.cToolbar = cToolbar;
+        this.cMain = cMain;
+    }
+
+    protected Context getCurContext() {
+        return this.iUI.getCurActivity();
+    }
+
+    protected Resources getResources() {
+        return getCurContext().getResources();
+    }
+
+    /**
+     * 获取 控件
+     *
+     * @param id 布局中某个组件的id
+     */
+    @Override
+    public <V extends View> V findViewById(int id) {
+        if(this.views==null){
+            this.views = new SparseArray<>();
+        }
+        View v = this.views.get(id);
+        if (v == null) {
+            v = mLayout.findViewById(id);
+            views.put(id, v);
+        }
+        return mLayout.findViewById(id);
+    }
+
+
+    /**
+     * 获取 控件
+     *
+     * @param id     布局中某个组件的id
+     * @param parent parent
+     */
+    @Override
+    public <V extends View> V findViewById(int id, View parent) {
+        if (parent != null) return parent.findViewById(id);
+        return findViewById(id);
+    }
+
+    @Override
+    public <T extends View> T setOnClickListener(int id) {
+        T v = findViewById(id);
+        if (v != null) v.setOnClickListener(this);
+        return v;
+    }
+
+    @Override
+    public <T extends View> T setOnClickListener(int id, View parent) {
+        T v = findViewById(id, parent);
+        if (v != null) v.setOnClickListener(this);
+        return v;
+    }
+
+
+    @Override
+    public int getStatusBarHeight() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            return iUI.getStatusBarHeight();
+            return ResUtil.getStatusBarHeight(getCurContext());
         }
         return 0;
+    }
+
+    @Override
+    public boolean isTranslucentStatus() {
+        return true;
     }
 
     private int getHeaderHeight() {
@@ -84,7 +211,7 @@ public class TemplateController implements ITemplateController, View.OnClickList
 
     private void initToolbar() {
         if (cToolbar == null) return;
-        if (iUI.isTranslucentStatus()) {
+        if (isTranslucentStatus()) {
             int statusBarHeight = getStatusBarHeight();
             if (statusBarHeight > 0) {
                 cToolbar.setPadding(0, statusBarHeight, 0, 0);
@@ -176,7 +303,7 @@ public class TemplateController implements ITemplateController, View.OnClickList
      */
     protected ViewGroup.LayoutParams generateHeadActionLayoutParams(boolean isImage, int gravity) {
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, getHeaderHeight());
-        if(isImage){
+        if (isImage) {
             lp.width = getHeaderHeight();
         }
         lp.gravity = gravity;
@@ -229,7 +356,7 @@ public class TemplateController implements ITemplateController, View.OnClickList
 
     @Override
     public void showToast(CharSequence msg) {
-        MyToast.show(getCurContext(), msg);
+        ToastUtil.show(getCurContext(), msg);
     }
 
     @Override
@@ -288,7 +415,7 @@ public class TemplateController implements ITemplateController, View.OnClickList
     @Override
     public void showLoadingDialog(CharSequence msg) {
         if (this.iLoadingDialog == null)
-            this.iLoadingDialog = new com.hy.frame.ui.dialog.LoadingDialog(getCurContext());
+            this.iLoadingDialog = new LoadingDialog(getCurContext());
         this.iLoadingDialog.showDialog(msg);
     }
 

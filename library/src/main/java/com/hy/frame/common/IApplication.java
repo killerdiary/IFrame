@@ -6,7 +6,7 @@ package com.hy.frame.common;
  * time 19-7-8 下午3:43
  * desc 无
  */
-public interface IBaseApplication {
+public interface IApplication {
     /**
      * Log 开关
      */
@@ -104,5 +104,7 @@ public interface IBaseApplication {
          * 取数据
          */
         Object getValue(String key);
+
+        void clear();
     }
 }

@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Base_Theme">
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:textColorPrimary">@color/txt_black</item>
-        <item name="android:textColorHighlight">@color/txt_gray_light</item>
-        <item name="android:textColorHint">@color/txt_gray</item>
-        <item name="android:textColorLink">@color/blue</item>
-        <!--        <item name="android:textAppearance">@style/Base_TxtStyle</item>-->
-        <!--        <item name="toolbarStyle">@style/Base_CurToolbar</item>-->
-        <item name="android:textViewStyle">@style/Base_TxtStyle</item>
-        <item name="android:editTextStyle">@style/Base_EditStyle</item>
-        <item name="android:buttonStyle">@style/Base_BtnStyle</item>
         <item name="appHeaderHeight">@dimen/header_height</item>
         <item name="appBackground">@color/smoke</item>
         <item name="appThemeColor">@color/blue</item>
         <item name="appTitleSize">@dimen/txt_title</item>
         <item name="appTitleColor">@color/white</item>
         <item name="appTitleBarBg">?attr/appThemeColor</item>
-        <item name="appProgressColor">@color/blue</item>
-        <item name="appControlHighlight">@color/btn_highlight</item>
+        <item name="appProgressColor">?attr/appThemeColor</item>
+        <item name="appControlHighlight">@color/highlight</item>
+        <item name="appTextStyle">@style/Base_TxtStyle</item>
+        <item name="appEditStyle">@style/Base_EditStyle</item>
+        <item name="appButtonStyle">@style/Base_BtnStyle</item>
+
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">?attr/appBackground</item>
+
+        <item name="android:textViewStyle">@style/Base_TxtStyle</item>
+        <item name="android:editTextStyle">@style/Base_EditStyle</item>
+        <item name="android:buttonStyle">@style/Base_BtnStyle</item>
     </style>
 
     <style name="Base_TxtStyle">
@@ -71,30 +70,6 @@
         <!-- 模糊 -->
         <item name="android:backgroundDimAmount">0.5</item>
     </style>
-
-<!--    <style name="AVLoadingIndicatorView">-->
-<!--        <item name="minWidth">48dip</item>-->
-<!--        <item name="maxWidth">48dip</item>-->
-<!--        <item name="minHeight">48dip</item>-->
-<!--        <item name="maxHeight">48dip</item>-->
-<!--        <item name="indicatorName">LineSpinFadeLoaderIndicator</item>-->
-<!--    </style>-->
-
-<!--    <style name="AVLoadingIndicatorView.Large">-->
-<!--        <item name="minWidth">72dip</item>-->
-<!--        <item name="maxWidth">72dip</item>-->
-<!--        <item name="minHeight">72dip</item>-->
-<!--        <item name="maxHeight">72dip</item>-->
-<!--        <item name="indicatorName">LineSpinFadeLoaderIndicator</item>-->
-<!--    </style>-->
-
-<!--    <style name="AVLoadingIndicatorView.Small">-->
-<!--        <item name="minWidth">36dip</item>-->
-<!--        <item name="maxWidth">36dip</item>-->
-<!--        <item name="minHeight">36dip</item>-->
-<!--        <item name="maxHeight">36dip</item>-->
-<!--        <item name="indicatorName">LineSpinFadeLoaderIndicator</item>-->
-<!--    </style>-->
 
     <style name="animBottomInBottomOutStyle">
         <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>

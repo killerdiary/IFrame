@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 
 import java.util.List;
 
@@ -108,4 +109,23 @@ public final class PmUtil {
         return false;
     }
 
+    public static String getAbiS() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            StringBuilder sb = new StringBuilder();
+            String[] abiS = Build.SUPPORTED_ABIS;
+            if (abiS != null) {
+                int size = abiS.length;
+                int i = 0;
+                for (String item : abiS) {
+                    i++;
+                    sb.append(item);
+                    if (i < size)
+                        sb.append(",");
+                }
+            }
+            return sb.toString();
+        }
+        return Build.CPU_ABI + "," + Build.CPU_ABI2;
+
+    }
 }

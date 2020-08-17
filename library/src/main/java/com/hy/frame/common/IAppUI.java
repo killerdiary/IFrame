@@ -10,28 +10,17 @@ import android.os.Bundle;
  * time 19-7-10 下午12:13
  * desc 无
  */
-public interface IBaseTemplateUI {
-    /**
-     * 是否启用唯一布局，否者使用公有模板[ITemplateControl]
-     */
-    boolean isSingleLayout();
+public interface IAppUI {
 
-    /**
-     * LayoutId 默认值为0
-     */
-    int getBaseLayoutId();
-
-    /**
-     * 获取模板[ITemplateControl]
-     */
-    ITemplateController getTemplateController();
-
-    /**
-     * 用于子类扩展
-     *
-     * @return ITemplateController
-     */
-    ITemplateController buildTemplateController();
+//    /**
+//     * 设置模板[ITemplateControl]
+//     */
+//    ITemplateUI buildTemplateUI();
+//
+//    /**
+//     * 获取模板[ITemplateControl]
+//     */
+//    ITemplateUI getTemplateUI();
 
     /**
      * 获取图片加载器
@@ -45,22 +34,14 @@ public interface IBaseTemplateUI {
      */
     IImageLoader buildImageLoader();
 
-    /**
-     * 是否开启透明状态栏
-     */
-    boolean isTranslucentStatus();
 
-    /**
-     * 状态栏高度
-     */
-    int getStatusBarHeight();
 
     /**
      * 当前Application
      *
      * @return Application
      */
-    IBaseApplication getCurApp();
+    IApplication getCurApp();
 
     /**
      * 当前 Activity
