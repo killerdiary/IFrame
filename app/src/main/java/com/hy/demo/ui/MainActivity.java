@@ -12,7 +12,7 @@ public class MainActivity extends MenuActivity {
 
     @Override
     protected void initHeader(int drawLeft, int titleId) {
-        getTemplateController().setTitle(titleId);
+        getTemplateUI().setTitle(titleId);
     }
 
     @Override
