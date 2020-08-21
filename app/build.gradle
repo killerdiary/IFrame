@@ -4,12 +4,12 @@ android {
     def APP_ID = "com.hy.demo.iframe"
     def APP_NAME = "IFrame测试"
 
-    compileSdkVersion VERSION.compileSdkVersion
-    buildToolsVersion VERSION.buildToolsVersion //需要发布maven时必须
+    compileSdkVersion VERS.compileSdkVersion
+    buildToolsVersion VERS.buildToolsVersion //需要发布maven时必须
 
     defaultConfig {
-        minSdkVersion VERSION.minSdkVersion
-        targetSdkVersion VERSION.targetSdkVersion
+        minSdkVersion VERS.minSdkVersion
+        targetSdkVersion VERS.targetSdkVersion
 
         applicationId APP_ID
         resValue "string", "appName", APP_NAME
@@ -26,8 +26,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility VERSION.javaVersion
-        targetCompatibility VERSION.javaVersion
+        sourceCompatibility VERS.javaVersion
+        targetCompatibility VERS.javaVersion
     }
 
     android.applicationVariants.all { variant ->

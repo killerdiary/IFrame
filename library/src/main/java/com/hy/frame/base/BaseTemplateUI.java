@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.net.Uri;
 import android.os.Build;
 import android.util.SparseArray;
 import android.view.Gravity;
@@ -15,10 +16,11 @@ import android.widget.TextView;
 
 import com.hy.frame.common.IAppUI;
 import com.hy.frame.common.IBaseUI;
-import com.hy.frame.common.IImageLoader;
 import com.hy.frame.common.ILoadingDialog;
 import com.hy.frame.common.ILoadingUI;
 import com.hy.frame.common.ITemplateUI;
+import com.hy.frame.ui.LoadingDialog;
+import com.hy.frame.ui.LoadingUI;
 import com.hy.frame.util.ResUtil;
 import com.hy.frame.util.ToastUtil;
 import com.hy.iframe.R;
@@ -135,7 +137,7 @@ public abstract class BaseTemplateUI implements ITemplateUI, View.OnClickListene
     }
 
     protected Context getCurContext() {
-        return this.iUI.getCurActivity();
+        return this.iUI.getCurContext();
     }
 
     protected Resources getResources() {
@@ -149,7 +151,7 @@ public abstract class BaseTemplateUI implements ITemplateUI, View.OnClickListene
      */
     @Override
     public <V extends View> V findViewById(int id) {
-        if(this.views==null){
+        if (this.views == null) {
             this.views = new SparseArray<>();
         }
         View v = this.views.get(id);
@@ -335,11 +337,8 @@ public abstract class BaseTemplateUI implements ITemplateUI, View.OnClickListene
             ImageView img = (ImageView) v;
             if (drawRightOrStrId != 0) {
                 img.setImageResource(drawRightOrStrId);
-            } else if (iUI instanceof IBaseUI) {
-                IImageLoader loader = iUI.getImageLoader();
-                if (loader != null) {
-                    loader.load(img, pathOrStr);
-                }
+            } else   {
+                img.setImageURI(Uri.parse(pathOrStr.toString()));
             }
             return;
         }
@@ -475,7 +474,14 @@ public abstract class BaseTemplateUI implements ITemplateUI, View.OnClickListene
             this.iUI.onRightClick();
         } else if (id == R.id.base_cLoad) {
             this.iUI.onLoadViewClick();
-        } else if (this.iUI instanceof IBaseUI) {
+        } else {
+            onViewClick(v);
+        }
+    }
+
+    @Override
+    public void onViewClick(View v) {
+        if (this.iUI instanceof IBaseUI) {
             ((IBaseUI) this.iUI).onViewClick(v);
         }
     }

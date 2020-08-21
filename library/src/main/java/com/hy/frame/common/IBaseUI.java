@@ -1,6 +1,5 @@
 package com.hy.frame.common;
 
-import android.content.Context;
 import android.view.View;
 
 /**
@@ -10,7 +9,6 @@ import android.view.View;
  * desc 无
  */
 public interface IBaseUI {
-    Context getCurContext();
 
     /**
      * 初始化基本布局
@@ -31,5 +29,6 @@ public interface IBaseUI {
      * 控件点击事件
      */
     void onViewClick(View v);
+
 
 }

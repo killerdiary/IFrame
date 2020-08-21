@@ -46,7 +46,6 @@ public abstract class BaseDialog extends android.app.Dialog implements IBaseUI, 
         this.listener = listener;
     }
 
-    @Override
     public Context getCurContext() {
         return getContext();
     }

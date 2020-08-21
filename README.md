@@ -1,8 +1,7 @@
 # IFrame
 #### Android IFrame
 
-[![](https://jitpack.io/v/killerdiary/IFrame.svg)](https://jitpack.io/#killerdiary/IFrame)
-
+[![](https://jitpack.io/v/com.gitee.killer/IFrame.svg)](https://jitpack.io/#com.gitee.killer/IFrame)
 
 #### 使用方式
 
@@ -20,7 +19,7 @@ allprojects {
 ##### Step 2. Add the dependency
 ~~~
 dependencies {
-    implementation 'com.github.killerdiary:IFrame:XXX'
+    implementation 'com.gitee.killer:IFrame:1.0.2'
 }
 
 ~~~

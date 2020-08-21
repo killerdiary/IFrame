@@ -1,0 +1,20 @@
+def VERS = [:]
+VERS.minSdkVersion = 14
+VERS.compileSdkVersion = 28
+VERS.targetSdkVersion = 28
+VERS.buildToolsVersion = "28.0.3"
+VERS.javaVersion = 1.8
+
+VERS.plugin_gradle = '3.2.0'
+VERS.plugin_github = "2.1"
+
+ext.VERS = VERS
+
+def deps = [:]
+
+def plugin = [:]
+plugin.gradle = "com.android.tools.build:gradle:${VERS.plugin_gradle}"
+plugin.github = "com.github.dcendents:android-maven-gradle-plugin:${VERS.plugin_github}"
+deps.plugin = plugin
+
+ext.deps = deps

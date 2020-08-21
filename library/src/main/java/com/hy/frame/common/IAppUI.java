@@ -1,6 +1,7 @@
 package com.hy.frame.common;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,30 +12,6 @@ import android.os.Bundle;
  * desc 无
  */
 public interface IAppUI {
-
-//    /**
-//     * 设置模板[ITemplateControl]
-//     */
-//    ITemplateUI buildTemplateUI();
-//
-//    /**
-//     * 获取模板[ITemplateControl]
-//     */
-//    ITemplateUI getTemplateUI();
-
-    /**
-     * 获取图片加载器
-     */
-    IImageLoader getImageLoader();
-
-    /**
-     * 设置图片加载器
-     *
-     * @return IImageLoader 用于子类拓展
-     */
-    IImageLoader buildImageLoader();
-
-
 
     /**
      * 当前Application
@@ -49,6 +26,9 @@ public interface IAppUI {
      * @return Activity
      */
     Activity getCurActivity();
+
+
+    Context getCurContext();
 
     /**
      * 传入参数

@@ -1,10 +1,11 @@
-package com.hy.frame.base;
+package com.hy.frame.ui;
 
 import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hy.frame.base.BaseDialog;
 import com.hy.frame.common.ILoadingDialog;
 import com.hy.iframe.R;
 

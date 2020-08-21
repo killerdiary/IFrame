@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion VERSION.compileSdkVersion
-    buildToolsVersion VERSION.buildToolsVersion //需要发布maven时必须
+    compileSdkVersion VERS.compileSdkVersion
+    buildToolsVersion VERS.buildToolsVersion //需要发布maven时必须
 
     defaultConfig {
-        minSdkVersion VERSION.minSdkVersion
-        targetSdkVersion VERSION.targetSdkVersion
+        minSdkVersion VERS.minSdkVersion
+        targetSdkVersion VERS.targetSdkVersion
         versionCode 30
         versionName "3.0.0"
     }
@@ -18,8 +18,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility VERSION.javaVersion
-        targetCompatibility VERSION.javaVersion
+        sourceCompatibility VERS.javaVersion
+        targetCompatibility VERS.javaVersion
     }
 }
 

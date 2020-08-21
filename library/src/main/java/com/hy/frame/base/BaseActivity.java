@@ -65,16 +65,23 @@ public abstract class BaseActivity<T extends BaseTemplateUI> extends Activity im
         return this.mTemplateUI;
     }
 
-    @Override
+    /**
+     * 获取图片加载器
+     */
     public IImageLoader getImageLoader() {
+        if (isIDestroy()) return null;
+        if (this.mImageLoader == null)
+            this.mImageLoader = buildImageLoader();
         return this.mImageLoader;
     }
 
-    @Override
-    public IImageLoader buildImageLoader() {
-        return null;
-    }
+    public abstract IImageLoader buildImageLoader();
 
+    /**
+     * 设置图片加载器
+     *
+     * @return IImageLoader 用于子类拓展
+     */
     @Override
     public IApplication getCurApp() {
         return this.mApp;
@@ -231,7 +238,6 @@ public abstract class BaseActivity<T extends BaseTemplateUI> extends Activity im
             }
         }
         this.mTemplateUI = mTemplateUI;
-        this.mImageLoader = buildImageLoader();
     }
 
     @Override

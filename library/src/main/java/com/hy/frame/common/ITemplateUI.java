@@ -277,4 +277,9 @@ public interface ITemplateUI {
      * 资源释放
      */
     void onDestroy();
+
+    /**
+     * 控件点击事件
+     */
+    void onViewClick(View v);
 }
