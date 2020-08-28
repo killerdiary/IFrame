@@ -337,7 +337,7 @@ public abstract class BaseTemplateUI implements ITemplateUI, View.OnClickListene
             ImageView img = (ImageView) v;
             if (drawRightOrStrId != 0) {
                 img.setImageResource(drawRightOrStrId);
-            } else   {
+            } else {
                 img.setImageURI(Uri.parse(pathOrStr.toString()));
             }
             return;
@@ -386,6 +386,11 @@ public abstract class BaseTemplateUI implements ITemplateUI, View.OnClickListene
     public void showLoading(CharSequence msg) {
         if (initLoading())
             this.iLoadingUI.showLoading(msg);
+    }
+
+    @Override
+    public void showNoData(CharSequence msg) {
+        showNoData(msg, 0);
     }
 
     @Override
