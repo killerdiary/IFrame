@@ -183,6 +183,11 @@ public interface ITemplateUI {
 
     /**
      * 显示加载中
+     */
+    void showLoading();
+
+    /**
+     * 显示加载中
      *
      * @param strId 文本资源ID
      */
@@ -194,6 +199,13 @@ public interface ITemplateUI {
      * @param msg 描述
      */
     void showLoading(CharSequence msg);
+
+    /**
+     * 显示没有数据或错误页
+     *
+     * @param msg 描述
+     */
+    void showNoData(CharSequence msg);
 
     /**
      * 显示没有数据或错误页
@@ -222,6 +234,11 @@ public interface ITemplateUI {
      * @param iLoading 自定义对话框
      */
     void setLoadingDialog(ILoadingDialog iLoading);
+
+    /**
+     * 显示加载中
+     */
+    void showLoadingDialog();
 
     /**
      * 显示加载中

@@ -372,6 +372,11 @@ public abstract class BaseTemplateUI implements ITemplateUI, View.OnClickListene
     }
 
     @Override
+    public void showLoading() {
+        showLoading(R.string.loading);
+    }
+
+    @Override
     public void showLoading(int strId) {
         if (initLoading())
             this.iLoadingUI.showLoading(strId);
@@ -399,6 +404,11 @@ public abstract class BaseTemplateUI implements ITemplateUI, View.OnClickListene
     public void showCView() {
         if (initLoading())
             this.iLoadingUI.hide();
+    }
+
+    @Override
+    public void showLoadingDialog() {
+        showLoadingDialog(R.string.loading);
     }
 
     @Override

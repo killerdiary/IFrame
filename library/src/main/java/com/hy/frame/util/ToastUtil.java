@@ -13,6 +13,8 @@ import android.widget.Toast;
 public final class ToastUtil {
     private static Toast toast = null;
 
+    public static boolean cache = false;
+
     public static void show(Context cxt, int strId) {
         show(cxt, cxt.getResources().getString(strId));
     }
@@ -25,7 +27,16 @@ public final class ToastUtil {
     public static void show(Context cxt, CharSequence msg, int duration) {
         try {
             //去掉应用名显示
-            Toast toast = Toast.makeText(cxt.getApplicationContext(), null, duration);
+            Toast toast = null;
+            if (cache) {
+                toast = ToastUtil.toast;
+            }
+            if (toast == null) {
+                toast = Toast.makeText(cxt.getApplicationContext(), "", duration);
+            }
+            if (cache) {
+                ToastUtil.toast = toast;
+            }
             toast.setText(msg);
             toast.show();
         } catch (Exception ignored) {

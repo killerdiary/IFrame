@@ -61,7 +61,8 @@ public class LoadingUI implements ILoadingUI {
         this.imgMessage.setVisibility(View.VISIBLE);
         this.vLoading.setVisibility(View.GONE);
         this.txtMessage.setText(msg);
-        this.imgMessage.setImageResource(drawId);
+        if (drawId != 0 && drawId != View.NO_ID)
+            this.imgMessage.setImageResource(drawId);
     }
 
     private void show() {
